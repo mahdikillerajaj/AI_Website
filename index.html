@@ -10,6 +10,7 @@
             padding: 0;
             box-sizing: border-box;
         }
+
         body {
             font-family: Arial, sans-serif;
             background-color: #f4f4f4;
@@ -81,6 +82,8 @@
             font-size: 24px;
             text-align: center;
             position: relative;
+            opacity: 0;
+            animation: slideIn 1s forwards;
         }
 
         .slide:nth-child(1) {
@@ -93,6 +96,17 @@
 
         .slide:nth-child(3) {
             background-image: url('https://via.placeholder.com/1920x1080?text=هوش+مصنوعی+رایگان+و+پولی');
+        }
+
+        @keyframes slideIn {
+            0% {
+                opacity: 0;
+                transform: translateX(100%);
+            }
+            100% {
+                opacity: 1;
+                transform: translateX(0);
+            }
         }
 
         .slide .content {
@@ -248,37 +262,4 @@
         <p>ایمیل: <a href="mailto:mahdikh7889@gmail.com">mahdikh7889@gmail.com</a></p>
     </div>
 
-    <div class="footer">
-        <p>تمامی حقوق محفوظ است &copy; 2024</p>
-    </div>
-
-    <script>
-        let currentIndex = 0;
-
-        function showSlide(index) {
-            const slides = document.querySelector('.slides');
-            const totalSlides = document.querySelectorAll('.slide').length;
-            if (index >= totalSlides) {
-                currentIndex = 0;
-            } else if (index < 0) {
-                currentIndex = totalSlides - 1;
-            }
-            slides.style.transform = `translateX(${-100 * currentIndex}%)`;
-        }
-
-        function nextSlide() {
-            currentIndex++;
-            showSlide(currentIndex);
-        }
-
-        function prevSlide() {
-            currentIndex--;
-            showSlide(currentIndex);
-        }
-
-        // Show the first slide initially
-        showSlide(currentIndex);
-    </script>
-
-</body>
-                                                                     </html>
+    <div class="
