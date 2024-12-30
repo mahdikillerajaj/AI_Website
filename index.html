@@ -5,109 +5,251 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>سایت هوش مصنوعی</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
+        * {
             margin: 0;
             padding: 0;
-            background-color: #1a1a1a;
-            color: white;
+            box-sizing: border-box;
         }
-        .slide-container {
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        .navbar {
+            background-color: #007bff;
+            padding: 15px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            margin: 0 10px;
+            transition: background 0.3s;
+        }
+
+        .navbar a:hover {
+            background-color: #0056b3;
+            border-radius: 5px;
+        }
+
+        .main-section {
+            height: 100vh;
+            background: linear-gradient(to bottom, #007bff, #0056b3);
+            color: white;
+            text-align: center;
+            padding-top: 100px;
+        }
+
+        .main-section h1 {
+            font-size: 50px;
+            margin-bottom: 20px;
+        }
+
+        .main-section p {
+            font-size: 20px;
+            line-height: 1.6;
+        }
+
+        .slides-container {
             position: relative;
             width: 100%;
             height: 100vh;
             overflow: hidden;
+            background-color: #222;
         }
+
         .slides {
             display: flex;
-            transition: transform 0.5s ease;
+            transition: transform 1s ease;
         }
+
         .slide {
             min-width: 100%;
             height: 100vh;
-            background-color: #2a2a2a;
             display: flex;
             justify-content: center;
             align-items: center;
+            background-size: cover;
+            background-position: center;
             color: white;
-            font-size: 20px;
+            font-size: 24px;
             text-align: center;
-            padding: 20px;
+            position: relative;
         }
+
         .slide:nth-child(1) {
-            background: url('https://via.placeholder.com/1920x1080?text=هوش+مصنوعی+چیست؟') center/cover no-repeat;
+            background-image: url('https://via.placeholder.com/1920x1080?text=هوش+مصنوعی+چیست');
         }
+
         .slide:nth-child(2) {
-            background: url('https://via.placeholder.com/1920x1080?text=انواع+هوش+مصنوعی') center/cover no-repeat;
+            background-image: url('https://via.placeholder.com/1920x1080?text=انواع+هوش+مصنوعی');
         }
+
         .slide:nth-child(3) {
-            background: url('https://via.placeholder.com/1920x1080?text=هوش+مصنوعی+رایگان+و+پولی') center/cover no-repeat;
+            background-image: url('https://via.placeholder.com/1920x1080?text=هوش+مصنوعی+رایگان+و+پولی');
         }
-        .text {
+
+        .slide .content {
             background-color: rgba(0, 0, 0, 0.5);
             padding: 30px;
             border-radius: 10px;
             width: 80%;
-            margin: auto;
-            color: white;
         }
-        .navigation {
+
+        .navigation-buttons {
             position: absolute;
             top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
+            width: 100%;
             display: flex;
             justify-content: space-between;
-            width: 100%;
-            padding: 0 20px;
+            padding: 0 30px;
         }
+
         .nav-button {
             background-color: rgba(0, 0, 0, 0.5);
             color: white;
             padding: 10px 20px;
+            font-size: 18px;
             border: none;
             cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .nav-button:hover {
+            background-color: rgba(0, 0, 0, 0.7);
+        }
+
+        .form-container {
+            background-color: white;
+            color: black;
+            padding: 50px;
+            margin: 50px auto;
+            width: 400px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .form-container input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        .form-container button {
+            width: 100%;
+            padding: 10px;
+            background-color: #007bff;
+            border: none;
+            color: white;
             font-size: 18px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .form-container button:hover {
+            background-color: #0056b3;
+        }
+
+        .contact-section {
+            background-color: #f9f9f9;
+            padding: 50px;
+            text-align: center;
+        }
+
+        .contact-section h2 {
+            margin-bottom: 30px;
+        }
+
+        .contact-section p {
+            font-size: 20px;
+            color: #333;
+        }
+
+        .footer {
+            background-color: #007bff;
+            color: white;
+            padding: 10px;
+            text-align: center;
         }
     </style>
 </head>
 <body>
 
-    <div class="slide-container">
+    <div class="navbar">
+        <a href="#home">خانه</a>
+        <a href="#about">درباره ما</a>
+        <a href="#contact">ارتباط با ما</a>
+        <a href="#login">ورود</a>
+        <a href="#register">ثبت نام</a>
+    </div>
+
+    <div class="main-section" id="home">
+        <h1>هوش مصنوعی</h1>
+        <p>با دنیای هیجان‌انگیز هوش مصنوعی آشنا شوید و به علم آینده دست پیدا کنید!</p>
+    </div>
+
+    <div class="slides-container">
         <div class="slides">
             <div class="slide">
-                <div class="text">
-                    <h1>هوش مصنوعی چیست؟</h1>
-                    <p>هوش مصنوعی (AI) به شبیه‌سازی فرآیندهای هوشمند انسانی توسط ماشین‌ها اشاره دارد. این فرآیندها شامل یادگیری (یادگیری ماشین)، استدلال (توانایی انجام محاسبات منطقی)، و خودآموزی است. به عبارت دیگر، هوش مصنوعی به ماشین‌ها این امکان را می‌دهد که از داده‌ها یاد بگیرند و تصمیمات بهتری بگیرند بدون اینکه نیاز به دستورالعمل‌های دقیق از قبل باشند.</p>
+                <div class="content">
+                    <h2>هوش مصنوعی چیست؟</h2>
+                    <p>هوش مصنوعی به سیستم‌هایی اشاره دارد که توانایی یادگیری، تصمیم‌گیری و حل مشکلات را دارند. این سیستم‌ها با استفاده از الگوریتم‌ها و داده‌ها کار می‌کنند.</p>
                 </div>
             </div>
             <div class="slide">
-                <div class="text">
-                    <h1>انواع هوش مصنوعی</h1>
-                    <p>هوش مصنوعی به دو نوع اصلی تقسیم می‌شود:
-                    <ul>
-                        <li><strong>هوش مصنوعی محدود (Narrow AI):</strong> این نوع AI می‌تواند تنها در یک زمینه خاص به خوبی عمل کند، مانند دستیارهای صوتی مثل سیری یا گوگل اسیستنت.</li>
-                        <li><strong>هوش مصنوعی عمومی (AGI):</strong> هوش مصنوعی عمومی به ماشین‌ها اجازه می‌دهد که وظایف مختلف را مشابه انسان‌ها انجام دهند. هنوز این نوع AI به طور کامل تحقق نیافته است.</li>
-                    </ul>
-                    </p>
+                <div class="content">
+                    <h2>انواع هوش مصنوعی</h2>
+                    <p>هوش مصنوعی به دو دسته تقسیم می‌شود: Narrow AI (هوش مصنوعی محدود) و AGI (هوش مصنوعی عمومی) که در نوع دوم، سیستم قادر به انجام چندین وظیفه مشابه انسان‌هاست.</p>
                 </div>
             </div>
             <div class="slide">
-                <div class="text">
-                    <h1>هوش مصنوعی رایگان و پولی</h1>
-                    <p>برخی ابزارهای هوش مصنوعی به صورت رایگان در دسترس هستند، در حالی که برخی دیگر برای دسترسی به امکانات پیشرفته‌تر نیاز به خرید دارند.
-                    <ul>
-                        <li><strong>هوش مصنوعی رایگان:</strong> بسیاری از پلتفرم‌ها و ابزارهای AI مانند Google Colab و OpenAI Playground به صورت رایگان در دسترس هستند.</li>
-                        <li><strong>هوش مصنوعی پولی:</strong> ابزارهایی مانند IBM Watson و Microsoft Azure AI امکانات پیشرفته‌تری را ارائه می‌دهند که نیاز به خرید اشتراک یا پرداخت برای استفاده دارند.</li>
-                    </ul>
-                    </p>
+                <div class="content">
+                    <h2>هوش مصنوعی رایگان و پولی</h2>
+                    <p>ابزارهای هوش مصنوعی مختلفی وجود دارند که برخی از آن‌ها رایگان و برخی دیگر با هزینه قابل دسترسی هستند، مانند ابزارهای Google Colab و IBM Watson.</p>
                 </div>
             </div>
         </div>
-        <div class="navigation">
+        <div class="navigation-buttons">
             <button class="nav-button" onclick="prevSlide()">قبلی</button>
             <button class="nav-button" onclick="nextSlide()">بعدی</button>
         </div>
+    </div>
+
+    <div class="form-container" id="login">
+        <h2>ورود به سایت</h2>
+        <form>
+            <input type="email" placeholder="ایمیل" required>
+            <input type="password" placeholder="رمز عبور" required>
+            <button type="submit">ورود</button>
+        </form>
+    </div>
+
+    <div class="form-container" id="register">
+        <h2>ثبت نام در سایت</h2>
+        <form>
+            <input type="text" placeholder="نام" required>
+            <input type="email" placeholder="ایمیل" required>
+            <input type="password" placeholder="رمز عبور" required>
+            <button type="submit">ثبت نام</button>
+        </form>
+    </div>
+
+    <div class="contact-section" id="contact">
+        <h2>ارتباط با ما</h2>
+        <p>برای هر گونه سوال، لطفاً از طریق ایمیل زیر با ما در تماس باشید:</p>
+        <p>ایمیل: <a href="mailto:mahdikh7889@gmail.com">mahdikh7889@gmail.com</a></p>
+    </div>
+
+    <div class="footer">
+        <p>تمامی حقوق محفوظ است &copy; 2024</p>
     </div>
 
     <script>
@@ -139,4 +281,4 @@
     </script>
 
 </body>
-</html>
+                                                                     </html>
