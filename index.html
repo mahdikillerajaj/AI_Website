@@ -1,28 +1,142 @@
-<!DOCTYPE html>
+!DOCTYPE html>
 <html lang="fa">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>سایت هوش مصنوعی</title>
-    <link rel="stylesheet" href="style.css"> <!-- اگر از CSS استفاده کرده‌اید -->
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #1a1a1a;
+            color: white;
+        }
+        .slide-container {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            overflow: hidden;
+        }
+        .slides {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+        .slide {
+            min-width: 100%;
+            height: 100vh;
+            background-color: #2a2a2a;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: 20px;
+            text-align: center;
+            padding: 20px;
+        }
+        .slide:nth-child(1) {
+            background: url('https://via.placeholder.com/1920x1080?text=هوش+مصنوعی+چیست؟') center/cover no-repeat;
+        }
+        .slide:nth-child(2) {
+            background: url('https://via.placeholder.com/1920x1080?text=انواع+هوش+مصنوعی') center/cover no-repeat;
+        }
+        .slide:nth-child(3) {
+            background: url('https://via.placeholder.com/1920x1080?text=هوش+مصنوعی+رایگان+و+پولی') center/cover no-repeat;
+        }
+        .text {
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 30px;
+            border-radius: 10px;
+            width: 80%;
+            margin: auto;
+            color: white;
+        }
+        .navigation {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            padding: 0 20px;
+        }
+        .nav-button {
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            font-size: 18px;
+        }
+    </style>
 </head>
 <body>
-    <header>
-        <h1>به سایت هوش مصنوعی خوش آمدید</h1>
-    </header>
 
-    <section>
-        <h2>هوش مصنوعی چیست؟</h2>
-        <p>توضیحات مربوط به هوش مصنوعی...</p>
-    </section>
+    <div class="slide-container">
+        <div class="slides">
+            <div class="slide">
+                <div class="text">
+                    <h1>هوش مصنوعی چیست؟</h1>
+                    <p>هوش مصنوعی (AI) به شبیه‌سازی فرآیندهای هوشمند انسانی توسط ماشین‌ها اشاره دارد. این فرآیندها شامل یادگیری (یادگیری ماشین)، استدلال (توانایی انجام محاسبات منطقی)، و خودآموزی است. به عبارت دیگر، هوش مصنوعی به ماشین‌ها این امکان را می‌دهد که از داده‌ها یاد بگیرند و تصمیمات بهتری بگیرند بدون اینکه نیاز به دستورالعمل‌های دقیق از قبل باشند.</p>
+                </div>
+            </div>
+            <div class="slide">
+                <div class="text">
+                    <h1>انواع هوش مصنوعی</h1>
+                    <p>هوش مصنوعی به دو نوع اصلی تقسیم می‌شود:
+                    <ul>
+                        <li><strong>هوش مصنوعی محدود (Narrow AI):</strong> این نوع AI می‌تواند تنها در یک زمینه خاص به خوبی عمل کند، مانند دستیارهای صوتی مثل سیری یا گوگل اسیستنت.</li>
+                        <li><strong>هوش مصنوعی عمومی (AGI):</strong> هوش مصنوعی عمومی به ماشین‌ها اجازه می‌دهد که وظایف مختلف را مشابه انسان‌ها انجام دهند. هنوز این نوع AI به طور کامل تحقق نیافته است.</li>
+                    </ul>
+                    </p>
+                </div>
+            </div>
+            <div class="slide">
+                <div class="text">
+                    <h1>هوش مصنوعی رایگان و پولی</h1>
+                    <p>برخی ابزارهای هوش مصنوعی به صورت رایگان در دسترس هستند، در حالی که برخی دیگر برای دسترسی به امکانات پیشرفته‌تر نیاز به خرید دارند.
+                    <ul>
+                        <li><strong>هوش مصنوعی رایگان:</strong> بسیاری از پلتفرم‌ها و ابزارهای AI مانند Google Colab و OpenAI Playground به صورت رایگان در دسترس هستند.</li>
+                        <li><strong>هوش مصنوعی پولی:</strong> ابزارهایی مانند IBM Watson و Microsoft Azure AI امکانات پیشرفته‌تری را ارائه می‌دهند که نیاز به خرید اشتراک یا پرداخت برای استفاده دارند.</li>
+                    </ul>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="navigation">
+            <button class="nav-button" onclick="prevSlide()">قبلی</button>
+            <button class="nav-button" onclick="nextSlide()">بعدی</button>
+        </div>
+    </div>
 
-    <section>
-        <h2>انواع هوش مصنوعی</h2>
-        <p>توضیحات مربوط به انواع هوش مصنوعی...</p>
-    </section>
+    <script>
+        let currentIndex = 0;
 
-    <footer>
-        <p>&copy; 2024 تمامی حقوق محفوظ است.</p>
-    </footer>
+        function showSlide(index) {
+            const slides = document.querySelector('.slides');
+            const totalSlides = document.querySelectorAll('.slide').length;
+            if (index >= totalSlides) {
+                currentIndex = 0;
+            } else if (index < 0) {
+                currentIndex = totalSlides - 1;
+            }
+            slides.style.transform = `translateX(${-100 * currentIndex}%)`;
+        }
+
+        function nextSlide() {
+            currentIndex++;
+            showSlide(currentIndex);
+        }
+
+        function prevSlide() {
+            currentIndex--;
+            showSlide(currentIndex);
+        }
+
+        // Show the first slide initially
+        showSlide(currentIndex);
+    </script>
+
 </body>
 </html>
