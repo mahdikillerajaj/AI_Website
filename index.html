@@ -3,27 +3,95 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>مدیریت کاربران</title>
+    <title>سایت هوش مصنوعی حرفه‌ای</title>
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
-            font-family: Arial, sans-serif;
             background-color: #121212;
+            font-family: 'Arial', sans-serif;
             color: white;
+        }
+
+        header {
+            background: linear-gradient(to right, #001f3f, #00aaff);
+            padding: 30px;
             text-align: center;
-            direction: rtl;
+            font-size: 36px;
+            font-weight: bold;
+            color: white;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        nav {
+            margin-top: 20px;
+            text-align: center;
+            font-size: 18px;
+        }
+
+        nav ul {
+            list-style: none;
+        }
+
+        nav ul li {
+            display: inline-block;
+            margin: 0 20px;
+            cursor: pointer;
+            padding: 5px 10px;
+            border-radius: 5px;
+            transition: background 0.3s ease, transform 0.3s ease;
+        }
+
+        nav ul li:hover {
+            background-color: #00aaff;
+            transform: scale(1.1);
+        }
+
+        .content-container {
+            padding: 30px;
+            margin-top: 20px;
+        }
+
+        .content-box {
+            background-color: #1d1d1d;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .content-box h2 {
+            color: #00aaff;
+            font-size: 28px;
+            margin-bottom: 15px;
+        }
+
+        .content-box p {
+            font-size: 18px;
+            line-height: 1.6;
+            color: #dddddd;
+        }
+
+        footer {
+            background: #001f3f;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            margin-top: 40px;
         }
 
         .form-container {
+            padding: 30px;
             display: flex;
             justify-content: space-between;
-            flex-wrap: wrap;
-            padding: 30px;
-            max-width: 800px;
-            margin: 0 auto;
+            gap: 20px;
         }
 
         .form-container div {
-            width: 45%;
+            width: 48%;
             background-color: #333;
             padding: 25px;
             border-radius: 10px;
@@ -54,101 +122,118 @@
         }
 
         .message {
-            padding: 15px;
-            margin: 15px auto;
-            width: 90%;
-            max-width: 700px;
             text-align: center;
-            border-radius: 10px;
-            font-size: 18px;
-            display: none; /* پیش‌فرض مخفی است */
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            display: none;
+            font-size: 16px;
         }
 
         .success {
-            background-color: #2ecc71;
-            color: #fff;
-            display: block;
+            background-color: #4caf50;
+            color: white;
         }
 
         .error {
-            background-color: #e74c3c;
-            color: #fff;
-            display: block;
+            background-color: #f44336;
+            color: white;
         }
     </style>
 </head>
 <body>
-    <h1>مدیریت کاربران</h1>
+    <header>سایت هوش مصنوعی حرفه‌ای</header>
+    <nav>
+        <ul>
+            <li onclick="showContent('intro')">هوش مصنوعی چیست؟</li>
+            <li onclick="showContent('types')">انواع هوش مصنوعی</li>
+            <li onclick="showContent('tools')">ابزارهای رایگان</li>
+            <li onclick="showContent('paid-tools')">ابزارهای پولی</li>
+        </ul>
+    </nav>
 
-    <!-- پیام وضعیت -->
-    <div id="status-message" class="message"></div>
+    <div class="content-container">
+        <div id="content-box" class="content-box">
+            <h2 id="content-title">لطفاً یک عنوان را انتخاب کنید</h2>
+            <p id="content-text">توضیحات در اینجا نمایش داده می‌شود.</p>
+        </div>
+    </div>
 
-    <!-- فرم ورود و ثبت‌نام -->
-    <div class="form-container" id="form-container">
+    <div class="form-container">
         <div>
-            <h3>ورود به سایت</h3>
-            <form onsubmit="login(event)">
-                <input type="email" id="login-email" placeholder="ایمیل خود را وارد کنید" required>
+            <h3>ورود</h3>
+            <div id="login-message" class="message"></div>
+            <form id="login-form">
+                <input type="email" id="login-email" placeholder="ایمیل" required>
                 <input type="password" id="login-password" placeholder="رمز عبور" required>
-                <button type="submit">ورود</button>
+                <button type="button" onclick="login()">ورود</button>
             </form>
         </div>
         <div>
             <h3>ثبت نام</h3>
-            <form onsubmit="register(event)">
+            <div id="register-message" class="message"></div>
+            <form id="register-form">
                 <input type="text" id="register-name" placeholder="نام کامل" required>
                 <input type="email" id="register-email" placeholder="ایمیل" required>
                 <input type="password" id="register-password" placeholder="رمز عبور" required>
-                <button type="submit">ثبت نام</button>
+                <button type="button" onclick="register()">ثبت نام</button>
             </form>
         </div>
     </div>
 
+    <footer>
+        تماس با ما: example@email.com
+    </footer>
+
     <script>
-        const users = JSON.parse(localStorage.getItem('users')) || [];
-        const statusMessage = document.getElementById('status-message');
-        const formContainer = document.getElementById('form-container');
+        function showContent(contentId) {
+            const contentTitle = document.getElementById('content-title');
+            const contentText = document.getElementById('content-text');
 
-        function displayMessage(message, isSuccess) {
-            statusMessage.textContent = message;
-            statusMessage.className = isSuccess ? 'message success' : 'message error';
+            if (contentId === 'intro') {
+                contentTitle.textContent = 'هوش مصنوعی چیست؟';
+                contentText.textContent = 'هوش مصنوعی به ماشین‌ها قابلیت تفکر و تصمیم‌گیری می‌دهد.';
+            } else if (contentId === 'types') {
+                contentTitle.textContent = 'انواع هوش مصنوعی';
+                contentText.textContent = 'هوش مصنوعی محدود، عمومی و فوق‌العاده.';
+            } else if (contentId === 'tools') {
+                contentTitle.textContent = 'ابزارهای رایگان';
+                contentText.textContent = 'مثال: ChatGPT و Hugging Face.';
+            } else if (contentId === 'paid-tools') {
+                contentTitle.textContent = 'ابزارهای پولی';
+                contentText.textContent = 'مثال: Jasper AI و DeepMind.';
+            }
         }
 
-        function clearForms() {
-            formContainer.innerHTML = `<h2>شما وارد سایت شده‌اید.</h2>`;
+        function login() {
+            const email = document.getElementById('login-email').value;
+            const password = document.getElementById('login-password').value;
+            const message = document.getElementById('login-message');
+
+            if (email === 'user@example.com' && password === 'password') {
+                message.textContent = 'ورود موفقیت آمیز بود!';
+                message.className = 'message success';
+            } else {
+                message.textContent = 'ورود ناموفق. لطفاً اطلاعات را بررسی کنید.';
+                message.className = 'message error';
+            }
+            message.style.display = 'block';
         }
 
-        function register(event) {
-            event.preventDefault();
-
+        function register() {
             const name = document.getElementById('register-name').value;
             const email = document.getElementById('register-email').value;
             const password = document.getElementById('register-password').value;
+            const message = document.getElementById('register-message');
 
-            if (users.find(user => user.email === email)) {
-                displayMessage('این ایمیل قبلا ثبت شده است.', false);
+            if (name && email && password) {
+                message.textContent = 'ثبت نام موفقیت آمیز بود!';
+                message.className = 'message success';
             } else {
-                users.push({ name, email, password });
-                localStorage.setItem('users', JSON.stringify(users));
-                displayMessage('ثبت‌نام با موفقیت انجام شد.', true);
-                clearForms();
+                message.textContent = 'ثبت نام ناموفق. لطفاً اطلاعات را کامل کنید.';
+                message.className = 'message error';
             }
-        }
-
-        function login(event) {
-            event.preventDefault();
-
-            const email = document.getElementById('login-email').value;
-            const password = document.getElementById('login-password').value;
-
-            const user = users.find(user => user.email === email && user.password === password);
-
-            if (user) {
-                displayMessage(`خوش آمدید، ${user.name}!`, true);
-                clearForms();
-            } else {
-                displayMessage('ایمیل یا رمز عبور اشتباه است.', false);
-            }
+            message.style.display = 'block';
         }
     </script>
 </body>
