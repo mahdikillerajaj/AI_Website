@@ -28,7 +28,7 @@
         }
 
         nav {
-            margin-top: 50px;
+            margin-top: 20px;
             text-align: center;
             font-size: 18px;
         }
@@ -40,7 +40,6 @@
         nav ul li {
             display: inline-block;
             margin: 0 20px;
-            position: relative;
             cursor: pointer;
             padding: 5px 10px;
             border-radius: 5px;
@@ -55,30 +54,18 @@
         .content-container {
             display: flex;
             justify-content: center;
-            padding: 50px;
-            margin-top: 50px;
+            flex-direction: column;
+            align-items: center;
+            padding: 30px;
+            margin-top: 20px;
         }
 
         .content-box {
-            width: 60%;
+            width: 80%;
             background-color: #1d1d1d;
             padding: 25px;
             border-radius: 15px;
             box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.3);
-            opacity: 0;
-            transform: translateY(50px);
-            animation: fadeInUp 0.7s ease-out forwards;
-        }
-
-        @keyframes fadeInUp {
-            0% {
-                opacity: 0;
-                transform: translateY(50px);
-            }
-            100% {
-                opacity: 1;
-                transform: translateY(0);
-            }
         }
 
         .content-box h2 {
@@ -104,11 +91,12 @@
         .form-container {
             display: flex;
             justify-content: space-between;
-            padding: 50px;
+            flex-wrap: wrap;
+            padding: 30px;
         }
 
         .form-container div {
-            width: 48%;
+            width: 45%;
             background-color: #333;
             padding: 25px;
             border-radius: 10px;
@@ -141,34 +129,6 @@
         footer p {
             font-size: 14px;
         }
-
-        /* Title change and content reveal effect */
-        .title-hidden {
-            opacity: 0;
-            transform: scale(0.5);
-            transition: opacity 0.5s ease, transform 0.5s ease;
-        }
-
-        .title-visible {
-            opacity: 1;
-            transform: scale(1);
-            transition: opacity 0.5s ease, transform 0.5s ease;
-        }
-        
-        .hidden-content {
-            display: none;
-            animation: fadeIn 0.5s forwards;
-        }
-
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-            }
-            to {
-                opacity: 1;
-            }
-        }
-
     </style>
 </head>
 <body>
@@ -177,10 +137,10 @@
     </header>
     <nav>
         <ul>
-            <li id="title1" onclick="showContent('intro')">هوش مصنوعی چیست؟</li>
-            <li id="title2" onclick="showContent('types')">انواع هوش مصنوعی</li>
-            <li id="title3" onclick="showContent('tools')">ابزارهای رایگان</li>
-            <li id="title4" onclick="showContent('paid-tools')">ابزارهای پولی</li>
+            <li onclick="showContent('intro')">هوش مصنوعی چیست؟</li>
+            <li onclick="showContent('types')">انواع هوش مصنوعی</li>
+            <li onclick="showContent('tools')">ابزارهای رایگان</li>
+            <li onclick="showContent('paid-tools')">ابزارهای پولی</li>
         </ul>
     </nav>
 
@@ -194,18 +154,18 @@
     <div class="form-container">
         <div>
             <h3>ورود به سایت</h3>
-            <form>
-                <input type="email" placeholder="ایمیل خود را وارد کنید" required>
-                <input type="password" placeholder="رمز عبور" required>
+            <form onsubmit="login(event)">
+                <input type="email" id="login-email" placeholder="ایمیل خود را وارد کنید" required>
+                <input type="password" id="login-password" placeholder="رمز عبور" required>
                 <button type="submit">ورود</button>
             </form>
         </div>
         <div>
             <h3>ثبت نام</h3>
-            <form>
-                <input type="text" placeholder="نام کامل" required>
-                <input type="email" placeholder="ایمیل" required>
-                <input type="password" placeholder="رمز عبور" required>
+            <form onsubmit="register(event)">
+                <input type="text" id="register-name" placeholder="نام کامل" required>
+                <input type="email" id="register-email" placeholder="ایمیل" required>
+                <input type="password" id="register-password" placeholder="رمز عبور" required>
                 <button type="submit">ثبت نام</button>
             </form>
         </div>
@@ -216,35 +176,54 @@
     </footer>
 
     <script>
-        function showContent(contentId) {
-            const titles = document.querySelectorAll('nav ul li');
-            titles.forEach(title => {
-                title.classList.remove('title-visible');
-                title.classList.add('title-hidden');
-            });
+        const users = JSON.parse(localStorage.getItem('users')) || [];
 
+        function showContent(contentId) {
             const contentTitle = document.getElementById('content-title');
             const contentText = document.getElementById('content-text');
 
-            // Content changing logic
             if (contentId === 'intro') {
                 contentTitle.textContent = 'هوش مصنوعی چیست؟';
-                contentText.textContent = 'هوش مصنوعی شاخه‌ای از علوم کامپیوتر است که به ماشین‌ها امکان می‌دهد مانند انسان فکر و عمل کنند. این فناوری شامل یادگیری ماشین، پردازش زبان طبیعی، و شبکه‌های عصبی می‌شود.';
+                contentText.textContent = 'هوش مصنوعی شاخه‌ای از علوم کامپیوتر است که...';
             } else if (contentId === 'types') {
                 contentTitle.textContent = 'انواع هوش مصنوعی';
-                contentText.textContent = 'هوش مصنوعی به سه دسته تقسیم می‌شود: هوش مصنوعی محدود (ANI)، هوش مصنوعی عمومی (AGI)، و هوش مصنوعی فوق‌العاده (ASI). هرکدام ویژگی‌ها و کاربردهای خاص خود را دارند.';
+                contentText.textContent = 'هوش مصنوعی به سه دسته تقسیم می‌شود...';
             } else if (contentId === 'tools') {
                 contentTitle.textContent = 'ابزارهای رایگان';
-                contentText.textContent = 'ابزارهای رایگان شامل ChatGPT، DALL-E، Hugging Face، و Google Colab هستند که امکان استفاده از مدل‌های پیشرفته هوش مصنوعی را به صورت رایگان فراهم می‌کنند.';
+                contentText.textContent = 'ابزارهای رایگان شامل ChatGPT، Google Colab...';
             } else if (contentId === 'paid-tools') {
                 contentTitle.textContent = 'ابزارهای پولی';
-                contentText.textContent = 'ابزارهای پولی مانند Jasper AI، DeepMind، و Copilot قابلیت‌های پیشرفته‌تری ارائه می‌دهند و برای کسب‌وکارها و پروژه‌های حرفه‌ای استفاده می‌شوند.';
+                contentText.textContent = 'ابزارهای پولی مانند Jasper AI، DeepMind...';
             }
+        }
 
-            // Show content and make title visible
-            document.getElementById('content-box').classList.add('active');
-            contentTitle.classList.remove('title-hidden');
-            contentTitle.classList.add('title-visible');
+        function register(event) {
+            event.preventDefault();
+            const name = document.getElementById('register-name').value;
+            const email = document.getElementById('register-email').value;
+            const password = document.getElementById('register-password').value;
+
+            if (users.find(user => user.email === email)) {
+                alert('این ایمیل قبلا ثبت شده است.');
+            } else {
+                users.push({ name, email, password });
+                localStorage.setItem('users', JSON.stringify(users));
+                alert('ثبت‌نام با موفقیت انجام شد.');
+            }
+        }
+
+        function login(event) {
+            event.preventDefault();
+            const email = document.getElementById('login-email').value;
+            const password = document.getElementById('login-password').value;
+
+            const user = users.find(user => user.email === email && user.password === password);
+
+            if (user) {
+                alert(`خوش آمدید، ${user.name}!`);
+            } else {
+                alert('ایمیل یا رمز عبور اشتباه است.');
+            }
         }
     </script>
 </body>
