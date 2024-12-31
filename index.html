@@ -1,5 +1,5 @@
-!DOCTYPE html>
-<html lang="fa">
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,103 +7,132 @@
     <style>
         body {
             margin: 0;
-            font-family: "Tahoma", sans-serif;
-            background: linear-gradient(120deg, #1e3c72, #2a5298);
-            color: white;
-            text-align: center;
-            direction: rtl;
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
         }
-        header {
-            background-color: #1e3c72;
+
+        .header {
+            background-color: #001f3f;
+            color: white;
             padding: 20px;
-            font-size: 2em;
-            font-weight: bold;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+            text-align: center;
         }
-        .menu {
-            margin: 20px;
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
         }
-        .menu button {
-            margin: 10px;
-            padding: 10px 20px;
-            background-color: #2a5298;
+
+        nav ul li {
+            margin: 0 10px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
             color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 1em;
-            transition: 0.3s;
+            font-size: 18px;
+            transition: color 0.3s;
         }
-        .menu button:hover {
-            background-color: #1e3c72;
-            transform: scale(1.1);
+
+        nav ul li a:hover {
+            color: #00aaff;
         }
+
+        main {
+            padding: 20px;
+            text-align: center;
+        }
+
         .slide {
             display: none;
-            background: white;
-            color: black;
-            padding: 20px;
-            margin: 20px auto;
-            width: 80%;
-            border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
-            text-align: right;
-            position: relative;
+            animation: fadeIn 0.5s;
+            margin-top: 20px;
         }
-        .slide h2 {
-            color: #1e3c72;
+
+        .slide.active {
+            display: block;
         }
-        .slide p {
-            font-size: 1.1em;
-            line-height: 1.8;
+
+        footer {
+            background-color: #001f3f;
+            color: white;
+            padding: 10px;
+            text-align: center;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
         }
-        .slide img {
-            width: 100px;
-            height: 100px;
-            position: absolute;
-            top: 20px;
-            left: 20px;
-            border-radius: 50%;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
         }
     </style>
 </head>
 <body>
-    <header>سایت هوش مصنوعی</header>
-    <div class="menu">
-        <button onclick="showSlide('slide1')">هوش مصنوعی چیست؟</button>
-        <button onclick="showSlide('slide2')">انواع هوش مصنوعی</button>
-        <button onclick="showSlide('slide3')">هوش مصنوعی رایگان</button>
-        <button onclick="showSlide('slide4')">هوش مصنوعی پولی</button>
-    </div>
-    <div id="slide1" class="slide">
-        <img src="https://via.placeholder.com/100" alt="AI Icon">
-        <h2>هوش مصنوعی چیست؟</h2>
-        <p>هوش مصنوعی به فناوری‌ای گفته می‌شود که توانایی انجام وظایفی شبیه به عملکردهای انسانی را دارد، مانند یادگیری، تصمیم‌گیری و حل مسائل.</p>
-    </div>
-    <div id="slide2" class="slide">
-        <img src="https://via.placeholder.com/100" alt="Types of AI Icon">
-        <h2>انواع هوش مصنوعی</h2>
-        <p>هوش مصنوعی شامل سه نوع است: ۱. هوش مصنوعی محدود ۲. هوش مصنوعی عمومی ۳. هوش مصنوعی فوق پیشرفته.</p>
-    </div>
-    <div id="slide3" class="slide">
-        <img src="https://via.placeholder.com/100" alt="Free AI Icon">
-        <h2>هوش مصنوعی رایگان</h2>
-        <p>برخی از ابزارهای هوش مصنوعی رایگان شامل Google Colab، ChatGPT رایگان و Hugging Face هستند.</p>
-    </div>
-    <div id="slide4" class="slide">
-        <img src="https://via.placeholder.com/100" alt="Paid AI Icon">
-        <h2>هوش مصنوعی پولی</h2>
-        <p>ابزارهای هوش مصنوعی پولی شامل مواردی مانند نسخه‌های پیشرفته ChatGPT، سرویس‌های AWS AI و ابزارهای سفارشی‌سازی‌شده می‌باشند.</p>
-    </div>
-
+    <header class="header">
+        <h1>سایت هوش مصنوعی</h1>
+        <nav>
+            <ul>
+                <li><a href="#" data-slide="intro">هوش مصنوعی چیست؟</a></li>
+                <li><a href="#" data-slide="types">انواع هوش مصنوعی</a></li>
+                <li><a href="#" data-slide="tools">ابزارهای رایگان</a></li>
+                <li><a href="#" data-slide="paid-tools">ابزارهای پولی</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <div id="slides">
+            <div id="intro" class="slide">
+                <h2>هوش مصنوعی چیست؟</h2>
+                <p>هوش مصنوعی شاخه‌ای از علوم کامپیوتر است که به ماشین‌ها امکان می‌دهد مانند انسان فکر و عمل کنند. این فناوری شامل یادگیری ماشین، پردازش زبان طبیعی، و شبکه‌های عصبی می‌شود.</p>
+            </div>
+            <div id="types" class="slide">
+                <h2>انواع هوش مصنوعی</h2>
+                <p>هوش مصنوعی به سه دسته تقسیم می‌شود: هوش مصنوعی محدود (ANI)، هوش مصنوعی عمومی (AGI)، و هوش مصنوعی فوق‌العاده (ASI). هرکدام ویژگی‌ها و کاربردهای خاص خود را دارند.</p>
+            </div>
+            <div id="tools" class="slide">
+                <h2>ابزارهای رایگان</h2>
+                <p>ابزارهای رایگان شامل ChatGPT، DALL-E، Hugging Face، و Google Colab هستند که امکان استفاده از مدل‌های پیشرفته هوش مصنوعی را به صورت رایگان فراهم می‌کنند.</p>
+            </div>
+            <div id="paid-tools" class="slide">
+                <h2>ابزارهای پولی</h2>
+                <p>ابزارهای پولی مانند Jasper AI، DeepMind، و Copilot قابلیت‌های پیشرفته‌تری ارائه می‌دهند و برای کسب‌وکارها و پروژه‌های حرفه‌ای استفاده می‌شوند.</p>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <p>ایمیل ما: mahdikh7889@gmail.com</p>
+    </footer>
     <script>
-        function showSlide(slideId) {
+        document.addEventListener('DOMContentLoaded', () => {
+            const links = document.querySelectorAll('nav ul li a');
             const slides = document.querySelectorAll('.slide');
-            slides.forEach(slide => slide.style.display = 'none');
-            document.getElementById(slideId).style.display = 'block';
-        }
+
+            links.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const slideId = link.getAttribute('data-slide');
+
+                    slides.forEach(slide => {
+                        slide.classList.remove('active');
+                    });
+
+                    const activeSlide = document.getElementById(slideId);
+                    if (activeSlide) {
+                        activeSlide.classList.add('active');
+                    }
+                });
+            });
+        });
     </script>
 </body>
 </html>
-
