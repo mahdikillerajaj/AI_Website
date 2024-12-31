@@ -1,70 +1,87 @@
-<!DOCTYPE html>
+!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>سایت هوش مصنوعی</title>
+    <title>سایت هوش مصنوعی حرفه‌ای</title>
     <style>
         body {
             margin: 0;
             font-family: 'Arial', sans-serif;
-            background-color: #f4f4f4;
+            background-color: #f2f2f2;
             color: #333;
         }
 
-        .header {
+        header {
             background-color: #001f3f;
             color: white;
             padding: 20px;
+            text-align: center;
+            font-size: 30px;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 9999;
+        }
+
+        nav {
+            margin-top: 100px;
             text-align: center;
         }
 
         nav ul {
             list-style: none;
             padding: 0;
-            margin: 0;
-            display: flex;
-            justify-content: center;
         }
 
         nav ul li {
-            margin: 0 10px;
+            display: inline-block;
+            margin: 0 15px;
         }
 
         nav ul li a {
             text-decoration: none;
-            color: white;
-            font-size: 18px;
-            transition: color 0.3s;
+            color: #ffffff;
+            font-size: 20px;
+            padding: 10px;
+            transition: background-color 0.3s;
         }
 
         nav ul li a:hover {
-            color: #00aaff;
+            background-color: #00aaff;
+            border-radius: 5px;
         }
 
-        main {
-            padding: 20px;
-            text-align: center;
+        .slide-container {
+            display: flex;
+            justify-content: space-evenly;
+            flex-wrap: wrap;
+            margin-top: 80px;
         }
 
         .slide {
-            display: none;
-            animation: fadeIn 0.5s;
+            width: 45%;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
             margin-top: 20px;
+            display: none;
+            animation: fadeIn 0.5s ease-in-out;
         }
 
         .slide.active {
             display: block;
         }
 
-        footer {
-            background-color: #001f3f;
-            color: white;
-            padding: 10px;
-            text-align: center;
-            position: fixed;
-            bottom: 0;
-            width: 100%;
+        .slide h2 {
+            color: #001f3f;
+            font-size: 25px;
+        }
+
+        .slide p {
+            color: #333;
+            line-height: 1.6;
         }
 
         @keyframes fadeIn {
@@ -75,43 +92,111 @@
                 opacity: 1;
             }
         }
+
+        footer {
+            background-color: #001f3f;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        .form-container {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 50px;
+        }
+
+        .form-container div {
+            width: 48%;
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        input[type="text"], input[type="email"], input[type="password"], button {
+            width: 100%;
+            padding: 15px;
+            margin: 10px 0;
+            border: none;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        input[type="text"], input[type="email"], input[type="password"] {
+            background-color: #f4f4f4;
+        }
+
+        button {
+            background-color: #00aaff;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #0077cc;
+        }
     </style>
 </head>
 <body>
-    <header class="header">
-        <h1>سایت هوش مصنوعی</h1>
-        <nav>
-            <ul>
-                <li><a href="#" data-slide="intro">هوش مصنوعی چیست؟</a></li>
-                <li><a href="#" data-slide="types">انواع هوش مصنوعی</a></li>
-                <li><a href="#" data-slide="tools">ابزارهای رایگان</a></li>
-                <li><a href="#" data-slide="paid-tools">ابزارهای پولی</a></li>
-            </ul>
-        </nav>
+    <header>
+        سایت هوش مصنوعی
     </header>
-    <main>
-        <div id="slides">
-            <div id="intro" class="slide">
-                <h2>هوش مصنوعی چیست؟</h2>
-                <p>هوش مصنوعی شاخه‌ای از علوم کامپیوتر است که به ماشین‌ها امکان می‌دهد مانند انسان فکر و عمل کنند. این فناوری شامل یادگیری ماشین، پردازش زبان طبیعی، و شبکه‌های عصبی می‌شود.</p>
-            </div>
-            <div id="types" class="slide">
-                <h2>انواع هوش مصنوعی</h2>
-                <p>هوش مصنوعی به سه دسته تقسیم می‌شود: هوش مصنوعی محدود (ANI)، هوش مصنوعی عمومی (AGI)، و هوش مصنوعی فوق‌العاده (ASI). هرکدام ویژگی‌ها و کاربردهای خاص خود را دارند.</p>
-            </div>
-            <div id="tools" class="slide">
-                <h2>ابزارهای رایگان</h2>
-                <p>ابزارهای رایگان شامل ChatGPT، DALL-E، Hugging Face، و Google Colab هستند که امکان استفاده از مدل‌های پیشرفته هوش مصنوعی را به صورت رایگان فراهم می‌کنند.</p>
-            </div>
-            <div id="paid-tools" class="slide">
-                <h2>ابزارهای پولی</h2>
-                <p>ابزارهای پولی مانند Jasper AI، DeepMind، و Copilot قابلیت‌های پیشرفته‌تری ارائه می‌دهند و برای کسب‌وکارها و پروژه‌های حرفه‌ای استفاده می‌شوند.</p>
-            </div>
+    <nav>
+        <ul>
+            <li><a href="#" data-slide="intro">هوش مصنوعی چیست؟</a></li>
+            <li><a href="#" data-slide="types">انواع هوش مصنوعی</a></li>
+            <li><a href="#" data-slide="tools">ابزارهای رایگان</a></li>
+            <li><a href="#" data-slide="paid-tools">ابزارهای پولی</a></li>
+        </ul>
+    </nav>
+
+    <div class="slide-container">
+        <div id="intro" class="slide">
+            <h2>هوش مصنوعی چیست؟</h2>
+            <p>هوش مصنوعی شاخه‌ای از علوم کامپیوتر است که به ماشین‌ها امکان می‌دهد مانند انسان فکر و عمل کنند. این فناوری شامل یادگیری ماشین، پردازش زبان طبیعی، و شبکه‌های عصبی می‌شود.</p>
         </div>
-    </main>
+        <div id="types" class="slide">
+            <h2>انواع هوش مصنوعی</h2>
+            <p>هوش مصنوعی به سه دسته تقسیم می‌شود: هوش مصنوعی محدود (ANI)، هوش مصنوعی عمومی (AGI)، و هوش مصنوعی فوق‌العاده (ASI). هرکدام ویژگی‌ها و کاربردهای خاص خود را دارند.</p>
+        </div>
+        <div id="tools" class="slide">
+            <h2>ابزارهای رایگان</h2>
+            <p>ابزارهای رایگان شامل ChatGPT، DALL-E، Hugging Face، و Google Colab هستند که امکان استفاده از مدل‌های پیشرفته هوش مصنوعی را به صورت رایگان فراهم می‌کنند.</p>
+        </div>
+        <div id="paid-tools" class="slide">
+            <h2>ابزارهای پولی</h2>
+            <p>ابزارهای پولی مانند Jasper AI، DeepMind، و Copilot قابلیت‌های پیشرفته‌تری ارائه می‌دهند و برای کسب‌وکارها و پروژه‌های حرفه‌ای استفاده می‌شوند.</p>
+        </div>
+    </div>
+
+    <div class="form-container">
+        <div>
+            <h3>ورود به سایت</h3>
+            <form>
+                <input type="email" placeholder="ایمیل خود را وارد کنید" required>
+                <input type="password" placeholder="رمز عبور" required>
+                <button type="submit">ورود</button>
+            </form>
+        </div>
+        <div>
+            <h3>ثبت نام</h3>
+            <form>
+                <input type="text" placeholder="نام کامل" required>
+                <input type="email" placeholder="ایمیل" required>
+                <input type="password" placeholder="رمز عبور" required>
+                <button type="submit">ثبت نام</button>
+            </form>
+        </div>
+    </div>
+
     <footer>
-        <p>ایمیل ما: mahdikh7889@gmail.com</p>
+        <p>تماس با ما: mahdikh7889@gmail.com</p>
     </footer>
+
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const links = document.querySelectorAll('nav ul li a');
@@ -135,4 +220,4 @@
         });
     </script>
 </body>
-</html>
+    </html>
