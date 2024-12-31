@@ -3,216 +3,101 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>سایت هوش مصنوعی حرفه‌ای</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #121212;
-            color: #fff;
-            margin: 0;
-            padding: 0;
-            text-align: center;
-        }
-
-        header {
-            background: linear-gradient(to right, #001f3f, #00aaff);
-            padding: 20px;
-            font-size: 24px;
-            font-weight: bold;
-        }
-
-        nav ul {
-            list-style-type: none;
-            padding: 0;
-            margin: 20px 0;
-            display: flex;
-            justify-content: center;
-        }
-
-        nav ul li {
-            margin: 0 15px;
-            cursor: pointer;
-            padding: 10px 20px;
-            background-color: #333;
-            border-radius: 5px;
-            transition: background-color 0.3s ease;
-        }
-
-        nav ul li:hover {
-            background-color: #00aaff;
-        }
-
-        .content-container {
-            margin: 20px auto;
-            max-width: 800px;
-            text-align: right;
-            background: #1d1d1d;
-            padding: 20px;
-            border-radius: 10px;
-        }
-
-        .form-container {
-            display: flex;
-            justify-content: center;
-            margin-top: 20px;
-        }
-
-        .form-container div {
-            margin: 0 10px;
-            background: #333;
-            padding: 20px;
-            border-radius: 10px;
-            width: 300px;
-        }
-
-        input[type="email"], input[type="password"], input[type="text"], button {
-            width: 100%;
-            margin: 10px 0;
-            padding: 10px;
-            border-radius: 5px;
-            border: none;
-            font-size: 16px;
-        }
-
-        button {
-            background: #00aaff;
-            color: #fff;
-            cursor: pointer;
-        }
-
-        button:hover {
-            background: #0077cc;
-        }
-
-        .message {
-            margin-top: 10px;
-            font-size: 14px;
-        }
-
-        .success {
-            color: green;
-        }
-
-        .error {
-            color: red;
-        }
-
-        footer {
-            margin-top: 20px;
-            background: #001f3f;
-            padding: 10px;
-            color: #fff;
-        }
-    </style>
+    <title>سایت حرفه‌ای هوش مصنوعی</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css">
 </head>
 <body>
-    <header>سایت هوش مصنوعی حرفه‌ای</header>
-    <nav>
-        <ul>
-            <li onclick="showContent('intro')">هوش مصنوعی چیست؟</li>
-            <li onclick="showContent('types')">انواع هوش مصنوعی</li>
-            <li onclick="showContent('tools')">ابزارهای رایگان</li>
-            <li onclick="showContent('paid-tools')">ابزارهای پولی</li>
-        </ul>
-    </nav>
-
-    <div class="content-container">
-        <h2 id="content-title">به سایت ما خوش آمدید</h2>
-        <p id="content-text">برای مشاهده اطلاعات، یکی از عنوان‌های بالا را انتخاب کنید.</p>
-    </div>
-
-    <div class="form-container">
-        <div>
-            <h3>ورود</h3>
-            <div id="login-message" class="message"></div>
-            <form id="login-form">
-                <input type="email" id="login-email" placeholder="ایمیل" required>
-                <input type="password" id="login-password" placeholder="رمز عبور" required>
-                <button type="button" onclick="login()">ورود</button>
-            </form>
+    <header>
+        <div class="container">
+            <h1>دنیای هوش مصنوعی</h1>
+            <nav>
+                <ul>
+                    <li><a href="#home">خانه</a></li>
+                    <li><a href="#about">درباره</a></li>
+                    <li><a href="#slides">اسلایدها</a></li>
+                    <li><a href="#contact">تماس با ما</a></li>
+                    <li><a href="#login">ورود/ثبت‌نام</a></li>
+                </ul>
+            </nav>
         </div>
-        <div>
-            <h3>ثبت نام</h3>
-            <div id="register-message" class="message"></div>
-            <form id="register-form">
-                <input type="text" id="register-name" placeholder="نام کامل" required>
-                <input type="email" id="register-email" placeholder="ایمیل" required>
-                <input type="password" id="register-password" placeholder="رمز عبور" required>
-                <button type="button" onclick="register()">ثبت نام</button>
-            </form>
+    </header>
+
+    <section id="home">
+        <div class="hero">
+            <h2>هوش مصنوعی؛ تکنولوژی آینده</h2>
+            <p>با پیشرفت تکنولوژی، دنیای ما به‌سوی هوشمندی بی‌نظیری حرکت می‌کند.</p>
+            <button onclick="scrollToSection('slides')">بیشتر بدانید</button>
         </div>
-    </div>
+    </section>
+
+    <section id="about">
+        <div class="content">
+            <h2>هوش مصنوعی چیست؟</h2>
+            <p>هوش مصنوعی شاخه‌ای از علوم کامپیوتر است که به توسعه سیستم‌هایی می‌پردازد که قادر به یادگیری و تصمیم‌گیری مشابه انسان هستند.</p>
+        </div>
+    </section>
+
+    <section id="slides">
+        <h2>اسلایدهای جذاب درباره هوش مصنوعی</h2>
+        <div class="swiper-container">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <h3>انواع هوش مصنوعی</h3>
+                    <p>هوش مصنوعی به سه دسته اصلی تقسیم می‌شود: محدود، عمومی و فوق‌العاده.</p>
+                </div>
+                <div class="swiper-slide">
+                    <h3>ابزارهای رایگان</h3>
+                    <p>از ابزارهای رایگان مثل ChatGPT، DALL-E و Hugging Face بهره ببرید.</p>
+                </div>
+                <div class="swiper-slide">
+                    <h3>ابزارهای پولی</h3>
+                    <p>ابزارهای قدرتمندی مثل Jasper AI و DeepMind قابلیت‌های حرفه‌ای ارائه می‌دهند.</p>
+                </div>
+                <div class="swiper-slide">
+                    <h3>کاربردهای هوش مصنوعی</h3>
+                    <p>هوش مصنوعی در پزشکی، صنایع، خودروهای خودران و بسیاری از حوزه‌های دیگر کاربرد دارد.</p>
+                </div>
+            </div>
+            <div class="swiper-pagination"></div>
+        </div>
+    </section>
+
+    <section id="login">
+        <h2>ورود/ثبت‌نام</h2>
+        <div class="forms">
+            <div>
+                <h3>ورود</h3>
+                <input type="email" placeholder="ایمیل">
+                <input type="password" placeholder="رمز عبور">
+                <button>ورود</button>
+            </div>
+            <div>
+                <h3>ثبت‌نام</h3>
+                <input type="text" placeholder="نام کامل">
+                <input type="email" placeholder="ایمیل">
+                <input type="password" placeholder="رمز عبور">
+                <button>ثبت‌نام</button>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <h2>تماس با ما</h2>
+        <form>
+            <input type="text" placeholder="نام">
+            <input type="email" placeholder="ایمیل">
+            <textarea placeholder="پیام شما"></textarea>
+            <button type="submit">ارسال</button>
+        </form>
+    </section>
 
     <footer>
-        تماس با ما: mahdikh7889@gmail.com
+        <p>© 2024 - طراحی شده برای سایت هوش مصنوعی</p>
     </footer>
 
-    <script>
-        const users = [];
-
-        function showContent(contentId) {
-            const title = document.getElementById('content-title');
-            const text = document.getElementById('content-text');
-
-            if (contentId === 'intro') {
-                title.textContent = 'هوش مصنوعی چیست؟';
-                text.textContent = 'هوش مصنوعی علمی است که به بررسی ایجاد ماشین‌های هوشمند می‌پردازد.';
-            } else if (contentId === 'types') {
-                title.textContent = 'انواع هوش مصنوعی';
-                text.textContent = 'هوش مصنوعی به سه نوع تقسیم می‌شود: محدود، عمومی و فوق‌العاده.';
-            } else if (contentId === 'tools') {
-                title.textContent = 'ابزارهای رایگان';
-                text.textContent = 'ابزارهای رایگان شامل ChatGPT، DALL-E و Hugging Face هستند.';
-            } else if (contentId === 'paid-tools') {
-                title.textContent = 'ابزارهای پولی';
-                text.textContent = 'ابزارهای پولی شامل Jasper AI و DeepMind هستند.';
-            }
-        }
-
-        function register() {
-            const name = document.getElementById('register-name').value;
-            const email = document.getElementById('register-email').value;
-            const password = document.getElementById('register-password').value;
-            const message = document.getElementById('register-message');
-
-            if (!name || !email || !password) {
-                message.textContent = 'تمام فیلدها را پر کنید.';
-                message.className = 'message error';
-                return;
-            }
-
-            const userExists = users.find(user => user.email === email);
-            if (userExists) {
-                message.textContent = 'این ایمیل قبلاً ثبت شده است.';
-                message.className = 'message error';
-                return;
-            }
-
-            users.push({ name, email, password });
-            message.textContent = 'ثبت‌نام موفقیت‌آمیز بود.';
-            message.className = 'message success';
-        }
-
-        function login() {
-            const email = document.getElementById('login-email').value;
-            const password = document.getElementById('login-password').value;
-            const message = document.getElementById('login-message');
-
-            if (!email || !password) {
-                message.textContent = 'تمام فیلدها را پر کنید.';
-                message.className = 'message error';
-                return;
-            }
-
-            const user = users.find(user => user.email === email && user.password === password);
-            if (user) {
-                message.textContent = 'ورود موفقیت‌آمیز بود.';
-                message.className = 'message success';
-            } else {
-                message.textContent = 'ایمیل یا رمز عبور اشتباه است.';
-                message.className = 'message error';
-            }
-        }
-    </script>
+    <script src="script.js"></script>
 </body>
-    </html>
+                        </html>
