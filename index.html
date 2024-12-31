@@ -5,139 +5,103 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>سایت هوش مصنوعی حرفه‌ای</title>
     <style>
-        * {
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #121212;
+            color: #fff;
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            background-color: #121212;
-            font-family: 'Arial', sans-serif;
-            color: white;
+            text-align: center;
         }
 
         header {
             background: linear-gradient(to right, #001f3f, #00aaff);
-            padding: 30px;
-            text-align: center;
-            font-size: 36px;
+            padding: 20px;
+            font-size: 24px;
             font-weight: bold;
-            color: white;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
-        }
-
-        nav {
-            margin-top: 20px;
-            text-align: center;
-            font-size: 18px;
         }
 
         nav ul {
-            list-style: none;
+            list-style-type: none;
+            padding: 0;
+            margin: 20px 0;
+            display: flex;
+            justify-content: center;
         }
 
         nav ul li {
-            display: inline-block;
-            margin: 0 20px;
+            margin: 0 15px;
             cursor: pointer;
-            padding: 5px 10px;
+            padding: 10px 20px;
+            background-color: #333;
             border-radius: 5px;
-            transition: background 0.3s ease, transform 0.3s ease;
+            transition: background-color 0.3s ease;
         }
 
         nav ul li:hover {
             background-color: #00aaff;
-            transform: scale(1.1);
         }
 
         .content-container {
-            padding: 30px;
-            margin-top: 20px;
-        }
-
-        .content-box {
-            background-color: #1d1d1d;
-            padding: 25px;
-            border-radius: 15px;
-            box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.3);
-        }
-
-        .content-box h2 {
-            color: #00aaff;
-            font-size: 28px;
-            margin-bottom: 15px;
-        }
-
-        .content-box p {
-            font-size: 18px;
-            line-height: 1.6;
-            color: #dddddd;
-        }
-
-        footer {
-            background: #001f3f;
-            color: white;
+            margin: 20px auto;
+            max-width: 800px;
+            text-align: right;
+            background: #1d1d1d;
             padding: 20px;
-            text-align: center;
-            margin-top: 40px;
+            border-radius: 10px;
         }
 
         .form-container {
-            padding: 30px;
             display: flex;
-            justify-content: space-between;
-            gap: 20px;
+            justify-content: center;
+            margin-top: 20px;
         }
 
         .form-container div {
-            width: 48%;
-            background-color: #333;
-            padding: 25px;
+            margin: 0 10px;
+            background: #333;
+            padding: 20px;
             border-radius: 10px;
-            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+            width: 300px;
         }
 
         input[type="email"], input[type="password"], input[type="text"], button {
             width: 100%;
-            padding: 15px;
             margin: 10px 0;
-            border-radius: 8px;
-            border: 1px solid #444;
-            background-color: #222;
-            color: white;
+            padding: 10px;
+            border-radius: 5px;
+            border: none;
             font-size: 16px;
         }
 
         button {
-            background-color: #00aaff;
-            border: none;
+            background: #00aaff;
+            color: #fff;
             cursor: pointer;
-            font-size: 18px;
-            transition: background-color 0.3s ease;
         }
 
         button:hover {
-            background-color: #0077cc;
+            background: #0077cc;
         }
 
         .message {
-            text-align: center;
-            padding: 10px;
-            border-radius: 5px;
-            margin-bottom: 10px;
-            display: none;
-            font-size: 16px;
+            margin-top: 10px;
+            font-size: 14px;
         }
 
         .success {
-            background-color: #4caf50;
-            color: white;
+            color: green;
         }
 
         .error {
-            background-color: #f44336;
-            color: white;
+            color: red;
+        }
+
+        footer {
+            margin-top: 20px;
+            background: #001f3f;
+            padding: 10px;
+            color: #fff;
         }
     </style>
 </head>
@@ -153,10 +117,8 @@
     </nav>
 
     <div class="content-container">
-        <div id="content-box" class="content-box">
-            <h2 id="content-title">لطفاً یک عنوان را انتخاب کنید</h2>
-            <p id="content-text">توضیحات در اینجا نمایش داده می‌شود.</p>
-        </div>
+        <h2 id="content-title">به سایت ما خوش آمدید</h2>
+        <p id="content-text">برای مشاهده اطلاعات، یکی از عنوان‌های بالا را انتخاب کنید.</p>
     </div>
 
     <div class="form-container">
@@ -182,42 +144,29 @@
     </div>
 
     <footer>
-        تماس با ما: example@email.com
+        تماس با ما: mahdikh7889@gmail.com
     </footer>
 
     <script>
+        const users = [];
+
         function showContent(contentId) {
-            const contentTitle = document.getElementById('content-title');
-            const contentText = document.getElementById('content-text');
+            const title = document.getElementById('content-title');
+            const text = document.getElementById('content-text');
 
             if (contentId === 'intro') {
-                contentTitle.textContent = 'هوش مصنوعی چیست؟';
-                contentText.textContent = 'هوش مصنوعی به ماشین‌ها قابلیت تفکر و تصمیم‌گیری می‌دهد.';
+                title.textContent = 'هوش مصنوعی چیست؟';
+                text.textContent = 'هوش مصنوعی علمی است که به بررسی ایجاد ماشین‌های هوشمند می‌پردازد.';
             } else if (contentId === 'types') {
-                contentTitle.textContent = 'انواع هوش مصنوعی';
-                contentText.textContent = 'هوش مصنوعی محدود، عمومی و فوق‌العاده.';
+                title.textContent = 'انواع هوش مصنوعی';
+                text.textContent = 'هوش مصنوعی به سه نوع تقسیم می‌شود: محدود، عمومی و فوق‌العاده.';
             } else if (contentId === 'tools') {
-                contentTitle.textContent = 'ابزارهای رایگان';
-                contentText.textContent = 'مثال: ChatGPT و Hugging Face.';
+                title.textContent = 'ابزارهای رایگان';
+                text.textContent = 'ابزارهای رایگان شامل ChatGPT، DALL-E و Hugging Face هستند.';
             } else if (contentId === 'paid-tools') {
-                contentTitle.textContent = 'ابزارهای پولی';
-                contentText.textContent = 'مثال: Jasper AI و DeepMind.';
+                title.textContent = 'ابزارهای پولی';
+                text.textContent = 'ابزارهای پولی شامل Jasper AI و DeepMind هستند.';
             }
-        }
-
-        function login() {
-            const email = document.getElementById('login-email').value;
-            const password = document.getElementById('login-password').value;
-            const message = document.getElementById('login-message');
-
-            if (email === 'user@example.com' && password === 'password') {
-                message.textContent = 'ورود موفقیت آمیز بود!';
-                message.className = 'message success';
-            } else {
-                message.textContent = 'ورود ناموفق. لطفاً اطلاعات را بررسی کنید.';
-                message.className = 'message error';
-            }
-            message.style.display = 'block';
         }
 
         function register() {
@@ -226,15 +175,44 @@
             const password = document.getElementById('register-password').value;
             const message = document.getElementById('register-message');
 
-            if (name && email && password) {
-                message.textContent = 'ثبت نام موفقیت آمیز بود!';
+            if (!name || !email || !password) {
+                message.textContent = 'تمام فیلدها را پر کنید.';
+                message.className = 'message error';
+                return;
+            }
+
+            const userExists = users.find(user => user.email === email);
+            if (userExists) {
+                message.textContent = 'این ایمیل قبلاً ثبت شده است.';
+                message.className = 'message error';
+                return;
+            }
+
+            users.push({ name, email, password });
+            message.textContent = 'ثبت‌نام موفقیت‌آمیز بود.';
+            message.className = 'message success';
+        }
+
+        function login() {
+            const email = document.getElementById('login-email').value;
+            const password = document.getElementById('login-password').value;
+            const message = document.getElementById('login-message');
+
+            if (!email || !password) {
+                message.textContent = 'تمام فیلدها را پر کنید.';
+                message.className = 'message error';
+                return;
+            }
+
+            const user = users.find(user => user.email === email && user.password === password);
+            if (user) {
+                message.textContent = 'ورود موفقیت‌آمیز بود.';
                 message.className = 'message success';
             } else {
-                message.textContent = 'ثبت نام ناموفق. لطفاً اطلاعات را کامل کنید.';
+                message.textContent = 'ایمیل یا رمز عبور اشتباه است.';
                 message.className = 'message error';
             }
-            message.style.display = 'block';
         }
     </script>
 </body>
-</html>
+    </html>
