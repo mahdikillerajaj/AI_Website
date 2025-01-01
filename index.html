@@ -1,0 +1,59 @@
+
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>سایت حرفه‌ای هوش مصنوعی</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>سایت حرفه‌ای هوش مصنوعی</h1>
+    </header>
+    <nav>
+        <ul>
+            <li onclick="showContent('intro')">هوش مصنوعی چیست؟</li>
+            <li onclick="showContent('types')">انواع هوش مصنوعی</li>
+            <li onclick="showContent('tools')">ابزارهای هوش مصنوعی</li>
+            <li onclick="showContent('contact')">تماس با ما</li>
+        </ul>
+    </nav>
+    <main>
+        <section id="intro" class="hidden">
+            <h2>هوش مصنوعی چیست؟</h2>
+            <p>هوش مصنوعی به توانایی ماشین‌ها برای شبیه‌سازی هوش انسانی اطلاق می‌شود...</p>
+        </section>
+        <section id="types" class="hidden">
+            <h2>انواع هوش مصنوعی</h2>
+            <p>هوش مصنوعی محدود (ANI)، عمومی (AGI)، و فوق‌العاده (ASI) از انواع مختلف آن هستند...</p>
+        </section>
+        <section id="tools" class="hidden">
+            <h2>ابزارهای هوش مصنوعی</h2>
+            <p>ابزارهایی مانند ChatGPT، DALL-E و موارد دیگر برای استفاده در دسترس هستند...</p>
+        </section>
+        <section id="contact" class="hidden">
+            <h2>تماس با ما</h2>
+            <p>ایمیل: mahdikh7889@gmail.com</p>
+        </section>
+    </main>
+    <div class="form-container">
+        <div id="register-form">
+            <h3>ثبت نام</h3>
+            <input type="text" id="reg-name" placeholder="نام کامل">
+            <input type="email" id="reg-email" placeholder="ایمیل">
+            <input type="password" id="reg-password" placeholder="رمز عبور">
+            <button onclick="register()">ثبت نام</button>
+            <p id="reg-message"></p>
+        </div>
+        <div id="login-form">
+            <h3>ورود</h3>
+            <input type="email" id="login-email" placeholder="ایمیل">
+            <input type="password" id="login-password" placeholder="رمز عبور">
+            <button onclick="login()">ورود</button>
+            <p id="login-message"></p>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
