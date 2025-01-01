@@ -1,0 +1,50 @@
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #121212;
+    color: white;
+}
+header {
+    text-align: center;
+    padding: 20px;
+    background: linear-gradient(45deg, #001f3f, #00aaff);
+}
+nav ul {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    background: #001f3f;
+    padding: 10px;
+}
+nav ul li {
+    margin: 0 15px;
+    cursor: pointer;
+    padding: 10px;
+    border-radius: 5px;
+    transition: background 0.3s;
+}
+nav ul li:hover {
+    background: #00aaff;
+}
+#slides {
+    padding: 20px;
+    text-align: center;
+}
+.slide {
+    display: none;
+    animation: fadeIn 0.5s ease-in-out;
+}
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+footer {
+    text-align: center;
+    padding: 10px;
+    background: #001f3f;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
