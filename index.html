@@ -1,0 +1,225 @@
+!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>سایت هوش مصنوعی حرفه‌ای</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #121212;
+            font-family: 'Arial', sans-serif;
+            color: white;
+        }
+
+        header {
+            background: linear-gradient(to right, #001f3f, #00aaff);
+            padding: 30px;
+            text-align: center;
+            font-size: 36px;
+            font-weight: bold;
+            color: white;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        nav {
+            margin-top: 50px;
+            text-align: center;
+            font-size: 18px;
+        }
+
+        nav ul {
+            list-style: none;
+        }
+
+        nav ul li {
+            display: inline-block;
+            margin: 0 20px;
+            position: relative;
+            cursor: pointer;
+            padding: 5px 10px;
+            border-radius: 5px;
+            transition: background 0.3s ease, transform 0.3s ease;
+        }
+
+        nav ul li:hover {
+            background-color: #00aaff;
+            transform: scale(1.1);
+        }
+
+        .content-container {
+            display: flex;
+            justify-content: center;
+            padding: 50px;
+            margin-top: 50px;
+        }
+
+        .content-box {
+            width: 60%;
+            background-color: #1d1d1d;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.3);
+            opacity: 0;
+            transform: translateY(50px);
+            animation: fadeInUp 0.7s ease-out forwards;
+        }
+
+        @keyframes fadeInUp {
+            0% {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .content-box h2 {
+            color: #00aaff;
+            font-size: 28px;
+            margin-bottom: 15px;
+        }
+
+        .content-box p {
+            font-size: 18px;
+            line-height: 1.6;
+            color: #dddddd;
+        }
+
+        footer {
+            background: #001f3f;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        .form-container {
+            display: flex;
+            justify-content: space-between;
+            padding: 50px;
+        }
+
+        .form-container div {
+            width: 48%;
+            background-color: #333;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        input[type="email"], input[type="password"], input[type="text"], button {
+            width: 100%;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 8px;
+            border: 1px solid #444;
+            background-color: #222;
+            color: white;
+            font-size: 16px;
+        }
+
+        button {
+            background-color: #00aaff;
+            border: none;
+            cursor: pointer;
+            font-size: 18px;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #0077cc;
+        }
+
+        footer p {
+            font-size: 14px;
+        }
+
+        .message {
+            color: green;
+            font-size: 16px;
+            margin-top: 20px;
+        }
+
+        .error-message {
+            color: red;
+            font-size: 16px;
+        }
+
+    </style>
+</head>
+<body>
+    <header>
+        سایت هوش مصنوعی
+    </header>
+    <nav>
+        <ul>
+            <li id="title1" onclick="showContent('intro')">هوش مصنوعی چیست؟</li>
+            <li id="title2" onclick="showContent('types')">انواع هوش مصنوعی</li>
+            <li id="title3" onclick="showContent('tools')">ابزارهای رایگان</li>
+            <li id="title4" onclick="showContent('paid-tools')">ابزارهای پولی</li>
+        </ul>
+    </nav>
+
+    <div class="content-container">
+        <div id="content-box" class="content-box">
+            <h2 id="content-title">لطفا روی یک عنوان کلیک کنید</h2>
+            <p id="content-text">توضیحات در اینجا نمایش داده خواهد شد.</p>
+        </div>
+    </div>
+
+    <div class="form-container">
+        <div id="register-form">
+            <h3>ثبت نام</h3>
+            <form onsubmit="register(event)">
+                <input type="text" id="fullName" placeholder="نام کامل" required>
+                <input type="email" id="email" placeholder="ایمیل" required>
+                <input type="password" id="password" placeholder="رمز عبور" required>
+                <button type="submit">ثبت نام</button>
+            </form>
+            <p id="register-message" class="message"></p>
+        </div>
+        <div id="login-form">
+            <h3>ورود به سایت</h3>
+            <form onsubmit="login(event)">
+                <input type="email" id="login-email" placeholder="ایمیل" required>
+                <input type="password" id="login-password" placeholder="رمز عبور" required>
+                <button type="submit">ورود</button>
+            </form>
+            <p id="login-message" class="message"></p>
+        </div>
+    </div>
+
+    <footer>
+        <p>تماس با ما: mahdikh7889@gmail.com</p>
+    </footer>
+
+    <script>
+        let users = [];
+
+        function showContent(contentId) {
+            const titles = document.querySelectorAll('nav ul li');
+            titles.forEach(title => {
+                title.classList.remove('active');
+            });
+
+            document.getElementById(contentId).classList.add('active');
+        }
+
+        function register(event) {
+            event.preventDefault();
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+
+            if (users.some(user => user.email === email)) {
+                document.getElementById('register-message').textContent = "ایمیل قبلاً ثبت شده است.";
+                document.getElementById('register-message').classList.add('error-message');
+            } else {
+                users.push({
