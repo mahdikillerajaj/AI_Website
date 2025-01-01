@@ -1,103 +1,55 @@
-<!DOCTYPE html>
+!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>سایت حرفه‌ای هوش مصنوعی</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css">
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <header>
-        <div class="container">
-            <h1>دنیای هوش مصنوعی</h1>
-            <nav>
-                <ul>
-                    <li><a href="#home">خانه</a></li>
-                    <li><a href="#about">درباره</a></li>
-                    <li><a href="#slides">اسلایدها</a></li>
-                    <li><a href="#contact">تماس با ما</a></li>
-                    <li><a href="#login">ورود/ثبت‌نام</a></li>
-                </ul>
-            </nav>
-        </div>
+        <h1>سایت هوش مصنوعی حرفه‌ای</h1>
+        <nav>
+            <ul>
+                <li onclick="showContent('intro')">هوش مصنوعی چیست؟</li>
+                <li onclick="showContent('types')">انواع هوش مصنوعی</li>
+                <li onclick="showContent('tools')">ابزارهای رایگان</li>
+                <li onclick="showContent('paid-tools')">ابزارهای پولی</li>
+            </ul>
+        </nav>
     </header>
 
-    <section id="home">
-        <div class="hero">
-            <h2>هوش مصنوعی؛ تکنولوژی آینده</h2>
-            <p>با پیشرفت تکنولوژی، دنیای ما به‌سوی هوشمندی بی‌نظیری حرکت می‌کند.</p>
-            <button onclick="scrollToSection('slides')">بیشتر بدانید</button>
-        </div>
+    <section id="content">
+        <h2>لطفا روی یک عنوان کلیک کنید</h2>
+        <p>توضیحات اینجا نمایش داده می‌شود.</p>
     </section>
 
-    <section id="about">
-        <div class="content">
-            <h2>هوش مصنوعی چیست؟</h2>
-            <p>هوش مصنوعی شاخه‌ای از علوم کامپیوتر است که به توسعه سیستم‌هایی می‌پردازد که قادر به یادگیری و تصمیم‌گیری مشابه انسان هستند.</p>
-        </div>
-    </section>
-
-    <section id="slides">
-        <h2>اسلایدهای جذاب درباره هوش مصنوعی</h2>
-        <div class="swiper-container">
-            <div class="swiper-wrapper">
-                <div class="swiper-slide">
-                    <h3>انواع هوش مصنوعی</h3>
-                    <p>هوش مصنوعی به سه دسته اصلی تقسیم می‌شود: محدود، عمومی و فوق‌العاده.</p>
-                </div>
-                <div class="swiper-slide">
-                    <h3>ابزارهای رایگان</h3>
-                    <p>از ابزارهای رایگان مثل ChatGPT، DALL-E و Hugging Face بهره ببرید.</p>
-                </div>
-                <div class="swiper-slide">
-                    <h3>ابزارهای پولی</h3>
-                    <p>ابزارهای قدرتمندی مثل Jasper AI و DeepMind قابلیت‌های حرفه‌ای ارائه می‌دهند.</p>
-                </div>
-                <div class="swiper-slide">
-                    <h3>کاربردهای هوش مصنوعی</h3>
-                    <p>هوش مصنوعی در پزشکی، صنایع، خودروهای خودران و بسیاری از حوزه‌های دیگر کاربرد دارد.</p>
-                </div>
-            </div>
-            <div class="swiper-pagination"></div>
-        </div>
-    </section>
-
-    <section id="login">
-        <h2>ورود/ثبت‌نام</h2>
-        <div class="forms">
+    <section id="auth-section">
+        <div class="form-container">
             <div>
-                <h3>ورود</h3>
-                <input type="email" placeholder="ایمیل">
-                <input type="password" placeholder="رمز عبور">
-                <button>ورود</button>
+                <h3>ورود به سایت</h3>
+                <form onsubmit="loginUser(event)">
+                    <input type="email" id="login-email" placeholder="ایمیل خود را وارد کنید" required>
+                    <input type="password" id="login-password" placeholder="رمز عبور" required>
+                    <button type="submit">ورود</button>
+                </form>
             </div>
             <div>
-                <h3>ثبت‌نام</h3>
-                <input type="text" placeholder="نام کامل">
-                <input type="email" placeholder="ایمیل">
-                <input type="password" placeholder="رمز عبور">
-                <button>ثبت‌نام</button>
+                <h3>ثبت نام</h3>
+                <form onsubmit="registerUser(event)">
+                    <input type="text" id="register-name" placeholder="نام کامل" required>
+                    <input type="email" id="register-email" placeholder="ایمیل" required>
+                    <input type="password" id="register-password" placeholder="رمز عبور" required>
+                    <button type="submit">ثبت نام</button>
+                </form>
             </div>
         </div>
-    </section>
-
-    <section id="contact">
-        <h2>تماس با ما</h2>
-        <form>
-            <input type="text" placeholder="نام">
-            <input type="email" placeholder="ایمیل">
-            <textarea placeholder="پیام شما"></textarea>
-            <button type="submit">ارسال</button>
-        </form>
     </section>
 
     <footer>
-        <p>© 2024 - طراحی شده برای سایت هوش مصنوعی</p>
+        <p>تماس با ما: <a href="mailto:mahdikh7889@gmail.com">mahdikh7889@gmail.com</a></p>
     </footer>
 
     <script src="script.js"></script>
 </body>
-                        </html>
+</html>
