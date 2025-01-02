@@ -1,23 +1,50 @@
-/* Login/Register Styles */
-#login-register {
-  background-color: #f9f9f9;
-  padding: 30px;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+// Initialize EmailJS
+emailjs.init('ORZHdjdcYlCEf-PEf'); // Add your EmailJS user ID
+
+// Handle Contact Us Form Submission
+document.getElementById("contact-form").addEventListener("submit", function (event) {
+  event.preventDefault(); // Prevent the default form submission
+
+  const userEmail = document.getElementById("user-email").value;
+  const userMessage = document.getElementById("user-message").value;
+
+  const templateParams = {
+    to_email: "mahdikh7889@gmail.com",  // Your email
+    from_name: userEmail,
+    message: userMessage,
+  };
+
+  emailjs.send('service_f5185ih', 'template_ten5nx3', templateParams)
+    .then(function (response) {
+      showFeedbackMessage("Your message has been sent successfully!", "success");
+      document.getElementById("user-email").value = "";
+      document.getElementById("user-message").value = "";
+    }, function (error) {
+      showFeedbackMessage("Oops! Something went wrong. Please try again.", "error");
+    });
+});
+
+// Feedback Message Display Function
+function showFeedbackMessage(message, type) {
+  const feedbackMessage = document.getElementById("feedback-message");
+  feedbackMessage.textContent = message;
+  feedbackMessage.className = type === "success" ? "success-message" : "error-message";
 }
 
-#login-register h2 {
-  font-size: 30px;
-  margin-bottom: 20px;
-}
+// Handle Login/Register Form
+document.getElementById("login-form").addEventListener("submit", function (event) {
+  event.preventDefault(); // Prevent the default form submission
 
-#login-register .form-group label {
-  font-weight: bold;
-}
+  const email = document.getElementById("email").value;
+  const password = document.getElementById("password").value;
 
-#login-register .btn {
-  width: 100%;
-  padding: 12px;
-  font-size: 16px;
-  margin-top: 10px;
-}
+  if (email && password) {
+    alert("Login successful!"); // Simple login alert, replace with actual logic
+  } else {
+    alert("Please fill in both fields.");
+  }
+});
+
+document.getElementById("register-btn").addEventListener("click", function () {
+  alert("Redirecting to registration page..."); // Replace with actual registration logic
+});
