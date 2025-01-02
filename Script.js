@@ -1,42 +1,35 @@
-// Feedback Message Display Function
-function showFeedbackMessage(message, type) {
-  const feedbackMessage = document.getElementById("feedback-message");
-  feedbackMessage.textContent = message;
-  feedbackMessage.className = type === "success" ? "success-message" : "error-message";
-}
+// Handle Register Form Submission
+document.getElementById("register").addEventListener("submit", function(event) {
+  event.preventDefault();
+  
+  var email = document.getElementById("register-email").value;
+  var password = document.getElementById("register-password").value;
 
-// Mock Data Storage
-const users = {};
-
-// Register Function
-function register() {
-  const email = document.getElementById("register-email").value;
-  const password = document.getElementById("register-password").value;
-
-  if (users[email]) {
-    showFeedbackMessage("This email is already registered!", "error");
+  // Simulate registration logic
+  if (email && password) {
+    document.getElementById("register-message").innerHTML = "Registration successful!";
+    document.getElementById("register-message").classList.add("success");
+    document.getElementById("register-form").style.display = "none";  // Hide register form
   } else {
-    users[email] = password;
-    showFeedbackMessage("Registration successful!", "success");
-    setTimeout(() => {
-      document.getElementById("register-email").value = "";
-      document.getElementById("register-password").value = "";
-    }, 1000);
+    document.getElementById("register-message").innerHTML = "Registration failed. Please try again.";
+    document.getElementById("register-message").classList.add("error");
   }
-}
+});
 
-// Login Function
-function login() {
-  const email = document.getElementById("login-email").value;
-  const password = document.getElementById("login-password").value;
+// Handle Login Form Submission
+document.getElementById("login").addEventListener("submit", function(event) {
+  event.preventDefault();
 
-  if (users[email] && users[email] === password) {
-    showFeedbackMessage("Login successful!", "success");
-    setTimeout(() => {
-      document.getElementById("login-email").value = "";
-      document.getElementById("login-password").value = "";
-    }, 1000);
+  var email = document.getElementById("login-email").value;
+  var password = document.getElementById("login-password").value;
+
+  // Simulate login logic
+  if (email && password) {
+    document.getElementById("login-message").innerHTML = "Login successful!";
+    document.getElementById("login-message").classList.add("success");
+    document.getElementById("login-form").style.display = "none";  // Hide login form
   } else {
-    showFeedbackMessage("Invalid email or password!", "error");
+    document.getElementById("login-message").innerHTML = "Login failed. Please try again.";
+    document.getElementById("login-message").classList.add("error");
   }
-}
+});
