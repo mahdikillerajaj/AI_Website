@@ -1,7 +1,6 @@
-// scripts.js
+// script.js
 
-// Mock Data
-const users = {};
+const users = {}; // Mock Database
 
 // Register Function
 function register() {
@@ -9,10 +8,10 @@ function register() {
   const password = document.getElementById("register-password").value;
 
   if (users[email]) {
-    document.getElementById("auth-response").innerText = "Email is already registered!";
+    document.getElementById("auth-response").innerText = "ایمیل قبلاً ثبت شده است!";
   } else {
     users[email] = password;
-    document.getElementById("auth-response").innerText = "Registration successful!";
+    document.getElementById("auth-response").innerText = "ثبت‌نام با موفقیت انجام شد!";
   }
 }
 
@@ -22,22 +21,15 @@ function login() {
   const password = document.getElementById("login-password").value;
 
   if (users[email] && users[email] === password) {
-    document.getElementById("auth-response").innerText = "Login successful!";
+    document.getElementById("auth-response").innerText = "ورود با موفقیت انجام شد!";
   } else {
-    document.getElementById("auth-response").innerText = "Invalid email or password!";
+    document.getElementById("auth-response").innerText = "ایمیل یا رمز عبور اشتباه است!";
   }
 }
 
-// Contact Form Function
+// Contact Form Handling
 document.getElementById("contact-form").addEventListener("submit", function (e) {
   e.preventDefault();
-  const name = document.getElementById("name").value;
-  const email = document.getElementById("email").value;
-  const message = document.getElementById("message").value;
 
-  if (name && email && message) {
-    document.getElementById("response").innerText = "Message sent successfully!";
-  } else {
-    document.getElementById("response").innerText = "Please fill all fields.";
-  }
-});
+  const name = document.getElementById("name").value;
+  const email
