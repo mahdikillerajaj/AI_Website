@@ -1,50 +1,72 @@
-// Initialize EmailJS
-emailjs.init('ORZHdjdcYlCEf-PEf'); // Add your EmailJS user ID
-
-// Handle Contact Us Form Submission
-document.getElementById("contact-form").addEventListener("submit", function (event) {
-  event.preventDefault(); // Prevent the default form submission
-
-  const userEmail = document.getElementById("user-email").value;
-  const userMessage = document.getElementById("user-message").value;
-
-  const templateParams = {
-    to_email: "mahdikh7889@gmail.com",  // Your email
-    from_name: userEmail,
-    message: userMessage,
-  };
-
-  emailjs.send('service_f5185ih', 'template_ten5nx3', templateParams)
-    .then(function (response) {
-      showFeedbackMessage("Your message has been sent successfully!", "success");
-      document.getElementById("user-email").value = "";
-      document.getElementById("user-message").value = "";
-    }, function (error) {
-      showFeedbackMessage("Oops! Something went wrong. Please try again.", "error");
-    });
-});
-
-// Feedback Message Display Function
-function showFeedbackMessage(message, type) {
-  const feedbackMessage = document.getElementById("feedback-message");
-  feedbackMessage.textContent = message;
-  feedbackMessage.className = type === "success" ? "success-message" : "error-message";
+/* styles.css */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
 }
 
-// Handle Login/Register Form
-document.getElementById("login-form").addEventListener("submit", function (event) {
-  event.preventDefault(); // Prevent the default form submission
+header {
+  background: #333;
+  color: white;
+  padding: 10px 0;
+}
 
-  const email = document.getElementById("email").value;
-  const password = document.getElementById("password").value;
+header .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+}
 
-  if (email && password) {
-    alert("Login successful!"); // Simple login alert, replace with actual logic
-  } else {
-    alert("Please fill in both fields.");
-  }
-});
+header h1 {
+  font-size: 24px;
+}
 
-document.getElementById("register-btn").addEventListener("click", function () {
-  alert("Redirecting to registration page..."); // Replace with actual registration logic
-});
+header nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+
+header nav ul li {
+  margin-left: 15px;
+}
+
+header nav ul li a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+header nav ul li a:hover {
+  text-decoration: underline;
+}
+
+.section {
+  padding: 50px;
+  text-align: center;
+}
+
+#contact form {
+  max-width: 400px;
+  margin: auto;
+}
+
+#contact form input,
+#contact form textarea,
+#contact form button {
+  width: 100%;
+  margin: 10px 0;
+  padding: 10px;
+}
+
+#login .form-container {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 20px;
+}
+
+#login .form-container div {
+  width: 45%;
+}
