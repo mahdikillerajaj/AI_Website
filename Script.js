@@ -1,37 +1,42 @@
-document.addEventListener("DOMContentLoaded", () => {
-    const registerForm = document.getElementById("registerForm");
-    const loginForm = document.getElementById("loginForm");
-    const message = document.getElementById("message");
-    const users = {};
+// Feedback Message Display Function
+function showFeedbackMessage(message, type) {
+  const feedbackMessage = document.getElementById("feedback-message");
+  feedbackMessage.textContent = message;
+  feedbackMessage.className = type === "success" ? "success-message" : "error-message";
+}
 
-    registerForm.addEventListener("submit", (e) => {
-        e.preventDefault();
-        const email = document.getElementById("registerEmail").value;
-        const password = document.getElementById("registerPassword").value;
+// Mock Data Storage
+const users = {};
 
-        if (users[email]) {
-            message.style.color = "red";
-            message.textContent = "این ایمیل قبلاً ثبت شده است.";
-        } else {
-            users[email] = password;
-            message.style.color = "green";
-            message.textContent = "ثبت نام موفقیت آمیز بود!";
-            registerForm.reset();
-        }
-    });
+// Register Function
+function register() {
+  const email = document.getElementById("register-email").value;
+  const password = document.getElementById("register-password").value;
 
-    loginForm.addEventListener("submit", (e) => {
-        e.preventDefault();
-        const email = document.getElementById("loginEmail").value;
-        const password = document.getElementById("loginPassword").value;
+  if (users[email]) {
+    showFeedbackMessage("This email is already registered!", "error");
+  } else {
+    users[email] = password;
+    showFeedbackMessage("Registration successful!", "success");
+    setTimeout(() => {
+      document.getElementById("register-email").value = "";
+      document.getElementById("register-password").value = "";
+    }, 1000);
+  }
+}
 
-        if (users[email] && users[email] === password) {
-            message.style.color = "green";
-            message.textContent = "ورود موفقیت آمیز بود!";
-            loginForm.reset();
-        } else {
-            message.style.color = "red";
-            message.textContent = "ورود ناموفق! اطلاعات نادرست است.";
-        }
-    });
-});
+// Login Function
+function login() {
+  const email = document.getElementById("login-email").value;
+  const password = document.getElementById("login-password").value;
+
+  if (users[email] && users[email] === password) {
+    showFeedbackMessage("Login successful!", "success");
+    setTimeout(() => {
+      document.getElementById("login-email").value = "";
+      document.getElementById("login-password").value = "";
+    }, 1000);
+  } else {
+    showFeedbackMessage("Invalid email or password!", "error");
+  }
+}
