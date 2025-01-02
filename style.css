@@ -65,11 +65,19 @@ header nav ul li a:hover {
   display: flex;
   overflow: hidden;
   position: relative;
+  margin-top: 30px;
 }
 
 .ai-slider .slide {
   min-width: 100%;
   transition: transform 0.5s ease-in-out;
+  background: #1b1b1b;
+  color: white;
+  padding: 20px;
+}
+
+.ai-slider .slide h3 {
+  font-size: 28px;
 }
 
 #contact form {
