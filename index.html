@@ -1,83 +1,106 @@
 <!DOCTYPE html>
-<html lang="fa">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>سایت حرفه‌ای</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Advanced Website</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" defer></script>
+  <script src="scripts.js" defer></script>
 </head>
 <body>
-    <header>
-        <h1>به سایت هوش مصنوعی خوش آمدید</h1>
-        <nav>
-            <ul>
-                <li><a href="#home">خانه</a></li>
-                <li><a href="#about">درباره ما</a></li>
-                <li><a href="#services">خدمات</a></li>
-                <li><a href="#contact">تماس با ما</a></li>
-                <li><a href="#login">ورود / ثبت نام</a></li>
-            </ul>
-        </nav>
-    </header>
+  <!-- Header Section -->
+  <header class="bg-dark text-white py-3 sticky-top">
+    <nav class="container d-flex justify-content-between align-items-center">
+      <h1 class="logo">AI <span>Power</span></h1>
+      <ul class="nav">
+        <li class="nav-item"><a href="#home" class="nav-link text-white">Home</a></li>
+        <li class="nav-item"><a href="#about" class="nav-link text-white">About</a></li>
+        <li class="nav-item"><a href="#features" class="nav-link text-white">Features</a></li>
+        <li class="nav-item"><a href="#contact" class="nav-link text-white">Contact</a></li>
+        <li class="nav-item"><a href="#login-register" class="btn btn-primary">Login/Register</a></li>
+      </ul>
+    </nav>
+  </header>
 
-    <section id="home">
-        <h2>خانه</h2>
-        <p>اینجا می‌توانید اطلاعاتی درباره سایت ما بیابید.</p>
-    </section>
+  <!-- Hero Section -->
+  <section id="home" class="hero text-center text-light d-flex align-items-center justify-content-center" style="background: linear-gradient(to bottom, #0d6efd, #003580); height: 100vh;">
+    <div>
+      <h1>Welcome to AI Power</h1>
+      <p>Innovative Solutions for a Smarter World</p>
+      <button class="btn btn-light btn-lg">Explore Now</button>
+    </div>
+  </section>
 
-    <section id="about">
-        <h2>درباره ما</h2>
-        <p>ما در زمینه هوش مصنوعی و فناوری‌های نوین فعالیت داریم و هدفمان ارائه بهترین خدمات به شماست.</p>
-    </section>
+  <!-- About Section -->
+  <section id="about" class="container py-5">
+    <h2 class="text-center mb-4">About Us</h2>
+    <p>
+      AI Power is a cutting-edge platform dedicated to leveraging Artificial Intelligence for innovative solutions across industries. Our tools are designed to enhance efficiency, productivity, and innovation.
+    </p>
+  </section>
 
-    <section id="services">
-        <h2>خدمات</h2>
-        <ul>
-            <li>مشاوره تخصصی در زمینه هوش مصنوعی</li>
-            <li>آموزش ابزارهای رایگان و پولی</li>
-            <li>ارائه پروژه‌های اختصاصی</li>
-        </ul>
-    </section>
-
-    <section id="contact">
-        <h2>تماس با ما</h2>
-        <form id="contactForm">
-            <label for="name">نام:</label>
-            <input type="text" id="name" name="name" required>
-            <label for="email">ایمیل:</label>
-            <input type="email" id="email" name="email" value="example@gmail.com" required>
-            <label for="message">پیام:</label>
-            <textarea id="message" name="message" required></textarea>
-            <button type="submit">ارسال</button>
-        </form>
-    </section>
-
-    <section id="login">
-        <h2>ورود / ثبت نام</h2>
-        <div id="auth">
-            <div id="register">
-                <h3>ثبت نام</h3>
-                <form id="registerForm">
-                    <input type="email" placeholder="ایمیل" id="registerEmail" required>
-                    <input type="password" placeholder="رمز عبور" id="registerPassword" required>
-                    <button type="submit">ثبت نام</button>
-                </form>
-            </div>
-            <div id="signin">
-                <h3>ورود</h3>
-                <form id="loginForm">
-                    <input type="email" placeholder="ایمیل" id="loginEmail" required>
-                    <input type="password" placeholder="رمز عبور" id="loginPassword" required>
-                    <button type="submit">ورود</button>
-                </form>
-            </div>
+  <!-- Features Section -->
+  <section id="features" class="bg-light py-5">
+    <div class="container">
+      <h2 class="text-center mb-4">Features</h2>
+      <div class="row text-center">
+        <div class="col-md-4">
+          <i class="fas fa-brain fa-3x mb-3 text-primary"></i>
+          <h5>Advanced AI Tools</h5>
+          <p>State-of-the-art tools for everyone.</p>
         </div>
-        <p id="message"></p>
-    </section>
+        <div class="col-md-4">
+          <i class="fas fa-cogs fa-3x mb-3 text-primary"></i>
+          <h5>Customizable Solutions</h5>
+          <p>Solutions tailored to your needs.</p>
+        </div>
+        <div class="col-md-4">
+          <i class="fas fa-chart-line fa-3x mb-3 text-primary"></i>
+          <h5>Real-Time Analytics</h5>
+          <p>Data-driven insights for better decisions.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-    <footer>
-        <p>© 2025 تمام حقوق محفوظ است.</p>
-    </footer>
-    <script src="script.js"></script>
+  <!-- Contact Section -->
+  <section id="contact" class="container py-5">
+    <h2 class="text-center mb-4">Contact Us</h2>
+    <form id="contact-form" class="w-50 mx-auto">
+      <input type="email" class="form-control mb-3" placeholder="Your Email" required>
+      <textarea class="form-control mb-3" placeholder="Your Message" rows="5" required></textarea>
+      <button type="submit" class="btn btn-primary w-100">Send Message</button>
+    </form>
+  </section>
+
+  <!-- Login/Register Section -->
+  <section id="login-register" class="bg-dark text-light py-5">
+    <div class="container">
+      <h2 class="text-center mb-4">Login/Register</h2>
+      <div class="row">
+        <div class="col-md-6">
+          <h3>Register</h3>
+          <input type="email" id="register-email" class="form-control mb-2" placeholder="Email" required>
+          <input type="password" id="register-password" class="form-control mb-2" placeholder="Password" required>
+          <button onclick="register()" class="btn btn-primary w-100">Register</button>
+        </div>
+        <div class="col-md-6">
+          <h3>Login</h3>
+          <input type="email" id="login-email" class="form-control mb-2" placeholder="Email" required>
+          <input type="password" id="login-password" class="form-control mb-2" placeholder="Password" required>
+          <button onclick="login()" class="btn btn-success w-100">Login</button>
+        </div>
+      </div>
+      <p id="feedback-message" class="text-center mt-3"></p>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-dark text-light py-3 text-center">
+    <p>&copy; 2025 AI Power. All rights reserved.</p>
+  </footer>
 </body>
-</html>
+                                                  </html>
