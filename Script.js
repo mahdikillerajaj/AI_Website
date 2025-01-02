@@ -1,35 +1,32 @@
-// Handle Register Form Submission
-document.getElementById("register").addEventListener("submit", function(event) {
-  event.preventDefault();
-  
-  var email = document.getElementById("register-email").value;
-  var password = document.getElementById("register-password").value;
+// Initialize EmailJS
+emailjs.init('YOUR_USER_ID'); // Add your EmailJS user ID
 
-  // Simulate registration logic
-  if (email && password) {
-    document.getElementById("register-message").innerHTML = "Registration successful!";
-    document.getElementById("register-message").classList.add("success");
-    document.getElementById("register-form").style.display = "none";  // Hide register form
-  } else {
-    document.getElementById("register-message").innerHTML = "Registration failed. Please try again.";
-    document.getElementById("register-message").classList.add("error");
-  }
-});
+// Feedback Message Display Function
+function showFeedbackMessage(message, type) {
+  const feedbackMessage = document.getElementById("feedback-message");
+  feedbackMessage.textContent = message;
+  feedbackMessage.className = type === "success" ? "success-message" : "error-message";
+}
 
-// Handle Login Form Submission
-document.getElementById("login").addEventListener("submit", function(event) {
-  event.preventDefault();
+// Contact Us Form Submission
+document.getElementById("contact-form").addEventListener("submit", function (event) {
+  event.preventDefault(); // Prevent the default form submission
 
-  var email = document.getElementById("login-email").value;
-  var password = document.getElementById("login-password").value;
+  const userEmail = document.getElementById("user-email").value;
+  const userMessage = document.getElementById("user-message").value;
 
-  // Simulate login logic
-  if (email && password) {
-    document.getElementById("login-message").innerHTML = "Login successful!";
-    document.getElementById("login-message").classList.add("success");
-    document.getElementById("login-form").style.display = "none";  // Hide login form
-  } else {
-    document.getElementById("login-message").innerHTML = "Login failed. Please try again.";
-    document.getElementById("login-message").classList.add("error");
-  }
+  const templateParams = {
+    to_email: "mahdikh7889@gmail.com",  // Your email
+    from_name: userEmail,
+    message: userMessage,
+  };
+
+  emailjs.send('service_f5185ih', 'template_ten5nx3', templateParams)
+    .then(function (response) {
+      showFeedbackMessage("Your message has been sent successfully!", "success");
+      document.getElementById("user-email").value = "";
+      document.getElementById("user-message").value = "";
+    }, function (error) {
+      showFeedbackMessage("Oops! Something went wrong. Please try again.", "error");
+    });
 });
