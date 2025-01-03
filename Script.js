@@ -1,7 +1,3 @@
-// Initialize EmailJS
-(function() {
-  emailjs.init('ORZHdjdcYlCEf-PEf'); // Public Key
-})();
 
 // Feedback Message Display Function
 function showFeedbackMessage(message, type) {
@@ -10,26 +6,38 @@ function showFeedbackMessage(message, type) {
   feedbackMessage.className = type === "success" ? "success-message" : "error-message";
 }
 
-// Send Email Function
-document.getElementById("contact-form").addEventListener("submit", function(event) {
-  event.preventDefault();
+// Mock Data Storage
+const users = {};
 
-  const userEmail = document.getElementById("user-email").value;
-  const userMessage = document.getElementById("user-message").value;
+// Register Function
+function register() {
+  const email = document.getElementById("register-email").value;
+  const password = document.getElementById("register-password").value;
 
-  const templateParams = {
-    to_email: userEmail,  // User's email
-    from_name: "AI Power", // From name
-    message: userMessage  // Message content
-  };
+  if (users[email]) {
+    showFeedbackMessage("This email is already registered!", "error");
+  } else {
+    users[email] = password;
+    showFeedbackMessage("Registration successful!", "success");
+    setTimeout(() => {
+      document.getElementById("register-email").value = "";
+      document.getElementById("register-password").value = "";
+    }, 1000);
+  }
+}
 
-  emailjs.send('service_f5185ih', 'template_ten5nx3', templateParams)
-    .then(function(response) {
-      console.log('SUCCESS!', response);
-      showFeedbackMessage("Message sent successfully!", "success");
-      document.getElementById("contact-form").reset(); // Clear form
-    }, function(error) {
-      console.log('FAILED...', error);
-      showFeedbackMessage("Failed to send message. Please try again later.", "error");
-    });
-});
+// Login Function
+function login() {
+  const email = document.getElementById("login-email").value;
+  const password = document.getElementById("login-password").value;
+
+  if (users[email] && users[email] === password) {
+    showFeedbackMessage("Login successful!", "success");
+    setTimeout(() => {
+      document.getElementById("login-email").value = "";
+      document.getElementById("login-password").value = "";
+    }, 1000);
+  } else {
+    showFeedbackMessage("Invalid email or password!", "error");
+  }
+}
