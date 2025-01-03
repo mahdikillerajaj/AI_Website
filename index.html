@@ -1,97 +1,42 @@
 <!DOCTYPE html>
-<html lang="fa">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>هوش مصنوعی</title>
-  <link rel="stylesheet" href="style.css">
-  <script src="script.js" defer></script>
-  <link href="https://fonts.googleapis.com/css2?family=Vazir&display=swap" rel="stylesheet"> <!-- فونت فارسی -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <title>AI Advanced Website</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@2.6.4/dist/email.min.js"></script>
+  <script src="scripts.js" defer></script>
 </head>
 <body>
-  <!-- Header -->
-  <header>
-    <div class="container">
-      <h1>وبسایت هوش مصنوعی</h1>
-      <nav>
-        <ul>
-          <li><a href="#home">خانه</a></li>
-          <li><a href="#about">درباره ما</a></li>
-          <li><a href="#ai-info">هوش مصنوعی</a></li>
-          <li><a href="#contact">تماس با ما</a></li>
-          <li><a href="#login">ورود / ثبت‌نام</a></li>
-        </ul>
-      </nav>
-    </div>
+  <!-- Header Section -->
+  <header class="bg-dark text-white py-3 sticky-top">
+    <nav class="container d-flex justify-content-between align-items-center">
+      <h1 class="logo">AI <span>Power</span></h1>
+      <ul class="nav">
+        <li class="nav-item"><a href="#home" class="nav-link text-white">Home</a></li>
+        <li class="nav-item"><a href="#about" class="nav-link text-white">About</a></li>
+        <li class="nav-item"><a href="#features" class="nav-link text-white">Features</a></li>
+        <li class="nav-item"><a href="#contact" class="nav-link text-white">Contact</a></li>
+        <li class="nav-item"><a href="#login-register" class="btn btn-primary">Login/Register</a></li>
+      </ul>
+    </nav>
   </header>
 
-  <!-- Home Section -->
-  <section id="home" class="section">
-    <h2>خوش آمدید به وبسایت هوش مصنوعی</h2>
-    <p>در این سایت شما با دنیای شگفت‌انگیز هوش مصنوعی آشنا خواهید شد.</p>
-  </section>
-
-  <!-- About Section -->
-  <section id="about" class="section">
-    <h2>درباره ما</h2>
-    <p>ما در اینجا به ارائه آخرین اطلاعات و ابزارهای هوش مصنوعی می‌پردازیم.</p>
-  </section>
-
-  <!-- AI Info Section -->
-  <section id="ai-info" class="section">
-    <h2>هوش مصنوعی چیست؟</h2>
-    <div class="ai-slider">
-      <div class="slide">
-        <h3>تعریف هوش مصنوعی</h3>
-        <p>هوش مصنوعی شاخه‌ای از علوم کامپیوتر است که به ماشین‌ها امکان می‌دهد مانند انسان‌ها فکر کنند.</p>
-      </div>
-      <div class="slide">
-        <h3>انواع هوش مصنوعی</h3>
-        <p>هوش مصنوعی به دو نوع اصلی تقسیم می‌شود: هوش مصنوعی ضعیف و هوش مصنوعی قوی.</p>
-      </div>
-      <div class="slide">
-        <h3>کاربردهای هوش مصنوعی</h3>
-        <p>از هوش مصنوعی در بسیاری از زمینه‌ها مانند پزشکی، آموزش، تجارت و خودروسازی استفاده می‌شود.</p>
-      </div>
-    </div>
-  </section>
-
   <!-- Contact Section -->
-  <section id="contact" class="section">
-    <h2>تماس با ما</h2>
-    <form id="contact-form">
-      <input type="text" id="name" placeholder="نام شما" required>
-      <input type="email" id="email" placeholder="ایمیل شما" required>
-      <textarea id="message" placeholder="پیام شما" required></textarea>
-      <button type="submit">ارسال پیام</button>
+  <section id="contact" class="container py-5">
+    <h2 class="text-center mb-4">Contact Us</h2>
+    <form id="contact-form" class="w-50 mx-auto">
+      <input type="email" id="user-email" class="form-control mb-3" placeholder="Your Email" required>
+      <textarea id="user-message" class="form-control mb-3" placeholder="Your Message" rows="5" required></textarea>
+      <button type="submit" class="btn btn-primary w-100">Send Message</button>
     </form>
-    <p id="response"></p>
-  </section>
-
-  <!-- Login Section -->
-  <section id="login" class="section">
-    <h2>ورود / ثبت‌نام</h2>
-    <div class="form-container">
-      <div>
-        <h3>ثبت‌نام</h3>
-        <input type="email" id="register-email" placeholder="ایمیل">
-        <input type="password" id="register-password" placeholder="رمز عبور">
-        <button onclick="register()">ثبت‌نام</button>
-      </div>
-      <div>
-        <h3>ورود</h3>
-        <input type="email" id="login-email" placeholder="ایمیل">
-        <input type="password" id="login-password" placeholder="رمز عبور">
-        <button onclick="login()">ورود</button>
-      </div>
-    </div>
-    <p id="auth-response"></p>
+    <p id="feedback-message" class="text-center mt-3"></p>
   </section>
 
   <!-- Footer -->
-  <footer>
-    <p>&copy; 2025 وبسایت هوش مصنوعی. تمامی حقوق محفوظ است.</p>
+  <footer class="bg-dark text-light py-3 text-center">
+    <p>&copy; 2025 AI Power. All rights reserved.</p>
   </footer>
 </body>
     </html>
