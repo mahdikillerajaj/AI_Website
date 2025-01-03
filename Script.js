@@ -1,37 +1,35 @@
-// script.js
+// Initialize EmailJS
+(function() {
+  emailjs.init('ORZHdjdcYlCEf-PEf'); // Public Key
+})();
 
-const users = {}; // Mock Database
-
-// Register Function
-function register() {
-  const email = document.getElementById("register-email").value;
-  const password = document.getElementById("register-password").value;
-
-  if (users[email]) {
-    document.getElementById("auth-response").innerText = "ایمیل قبلاً ثبت‌نام شده است.";
-  } else {
-    users[email] = { password };
-    document.getElementById("auth-response").innerText = "ثبت‌نام موفقیت‌آمیز بود.";
-  }
+// Feedback Message Display Function
+function showFeedbackMessage(message, type) {
+  const feedbackMessage = document.getElementById("feedback-message");
+  feedbackMessage.textContent = message;
+  feedbackMessage.className = type === "success" ? "success-message" : "error-message";
 }
 
-// Login Function
-function login() {
-  const email = document.getElementById("login-email").value;
-  const password = document.getElementById("login-password").value;
-
-  if (users[email] && users[email].password === password) {
-    document.getElementById("auth-response").innerText = "ورود موفقیت‌آمیز بود.";
-  } else {
-    document.getElementById("auth-response").innerText = "ایمیل یا رمز عبور اشتباه است.";
-  }
-}
-
-// Contact Form Submit Function
-document.getElementById("contact-form").addEventListener("submit", function (event) {
+// Send Email Function
+document.getElementById("contact-form").addEventListener("submit", function(event) {
   event.preventDefault();
-  const name = document.getElementById("name").value;
-  const email = document.getElementById("email").value;
-  const message = document.getElementById("message").value;
-  document.getElementById("response").innerText = `پیام شما از ${name} با ایمیل ${email} ارسال شد: ${message}`;
+
+  const userEmail = document.getElementById("user-email").value;
+  const userMessage = document.getElementById("user-message").value;
+
+  const templateParams = {
+    to_email: userEmail,  // User's email
+    from_name: "AI Power", // From name
+    message: userMessage  // Message content
+  };
+
+  emailjs.send('service_f5185ih', 'template_ten5nx3', templateParams)
+    .then(function(response) {
+      console.log('SUCCESS!', response);
+      showFeedbackMessage("Message sent successfully!", "success");
+      document.getElementById("contact-form").reset(); // Clear form
+    }, function(error) {
+      console.log('FAILED...', error);
+      showFeedbackMessage("Failed to send message. Please try again later.", "error");
+    });
 });
