@@ -39,9 +39,55 @@ header .logo span {
   color: #ff5722;
 }
 
+/* Hero Section */
+.hero {
+  text-align: center;
+  color: white;
+}
+
+.hero h1 {
+  font-size: 48px;
+  margin-bottom: 20px;
+}
+
+.hero button {
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+}
+
+/* About Section */
+#about {
+  text-align: justify;
+}
+
+#about h2 {
+  font-size: 36px;
+}
+
+/* Features Section */
+#features .col-md-4 {
+  margin-bottom: 20px;
+}
+
+#features .col-md-4 i {
+  transition: transform 0.3s ease;
+}
+
+#features .col-md-4 i:hover {
+  transform: scale(1.1);
+}
+
 /* Contact Section */
 #contact textarea {
   resize: none;
+}
+
+/* Login/Register Section */
+#login-register h3 {
+  font-size: 24px;
+  margin-bottom: 10px;
 }
 
 #feedback-message {
@@ -61,4 +107,4 @@ header .logo span {
 footer {
   background-color: #333;
   color: white;
-}
+  }
