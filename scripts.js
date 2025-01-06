@@ -1,49 +1,36 @@
+document.addEventListener("DOMContentLoaded", function () {
+    // انیمیشن برای بخش هدر
+    gsap.from(".main-header", { opacity: 0, duration: 1, y: -50 });
 
-// Feedback Message Display Function
-function showFeedbackMessage(message, type) {
-  const feedbackMessage = document.getElementById("feedback-message");
-  feedbackMessage.textContent = message;
-  feedbackMessage.className = type === "success" ? "success-message" : "error-message";
-}
+    // انیمیشن برای بخش هرو
+    gsap.from(".hero-content h1", { opacity: 0, duration: 2, y: -100, delay: 1 });
+    gsap.from(".hero-content p", { opacity: 0, duration: 2, y: -50, delay: 1.5 });
+    gsap.from(".btn", { opacity: 0, duration: 2, y: 50, delay: 2 });
 
-// Save Data to LocalStorage
-function saveToLocalStorage(key, value) {
-  localStorage.setItem(key, JSON.stringify(value));
-}
+    // انیمیشن‌ها برای کارت‌های محصول
+    const productCards = document.querySelectorAll(".product-card");
+    productCards.forEach((card, index) => {
+        gsap.from(card, {
+            opacity: 0,
+            duration: 1,
+            y: 100,
+            delay: 0.5 * index,
+            ease: "power2.out"
+        });
+    });
 
-// Load Data from LocalStorage
-function loadFromLocalStorage(key) {
-  return JSON.parse(localStorage.getItem(key)) || {};
-}
+    // افکت پارالاکس برای پس‌زمینه
+    window.addEventListener("scroll", function () {
+        const scrolled = window.scrollY;
+        document.querySelector(".hero").style.backgroundPosition = `center ${scrolled * 0.5}px`;
+    });
 
-// Register Function
-function register() {
-  const email = document.getElementById("register-email").value;
-  const password = document.getElementById("register-password").value;
-  const users = loadFromLocalStorage("users");
-
-  if (users[email]) {
-    showFeedbackMessage("This email is already registered!", "error");
-  } else {
-    users[email] = password;
-    saveToLocalStorage("users", users);
-    showFeedbackMessage("Registration successful!", "success");
-    setTimeout(() => {
-      document.getElementById("register-email").value = "";
-      document.getElementById("register-password").value = "";
-    }, 1000);
-  }
-}
-
-// Login Function
-function login() {
-  const email = document.getElementById("login-email").value;
-  const password = document.getElementById("login-password").value;
-  const users = loadFromLocalStorage("users");
-
-  if (users[email] && users[email] === password) {
-    showFeedbackMessage("Login successful!", "success");
-  } else {
-    showFeedbackMessage("Invalid email or password!", "error");
-  }
-}
+    // اسلاید شو برای محصولات ویژه
+    let currentIndex = 0;
+    const products = document.querySelectorAll(".product-card");
+    setInterval(function () {
+        products[currentIndex].style.display = "none";
+        currentIndex = (currentIndex + 1) % products.length;
+        products[currentIndex].style.display = "block";
+    }, 3000); // تغییر هر 3 ثانیه
+});
